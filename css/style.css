@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
+}
+@font-face {
+  font-family: "Lusitana";
+  src: url("fonts/lusitana/Lusitana.woff2") format("woff2"),
+    url("fonts/lusitana/Lusitana.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Lusitana", sans-serif;
+  background-color: beige;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 5px 0px;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+footer {
+  width: 100%;
+  text-align: right;
+  background-color: #207245;
+  color: white;
+  font-family: "Century Gothic", sans-serif;
+  font-size: 10px;
+}
+.box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 25px;
+  margin: 0 auto;
+  min-width: 500px;
+  min-height: fit-content;
+}
+.box2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+.box3 {
+  display: flex;
+  gap: 5px;
+}
+h1 {
+  max-width: 160px;
+  font-size: 18px;
+  color: #207245;
+  margin: 0px;
+  padding: 1;
+}
+
+h2 {
+  padding: 10px 0 0;
+  color: #207245;
+}
+
+.logo {
+  min-width: 156px;
+  width: 156px;
+  height: 98px;
+  margin: 0;
+}
+.icon {
+  height: 24px;
+  font-weight: 24px;
+}
+.gruppe {
+  height: 250px;
+}
+article {
+  text-align: center;
+  padding: 15px 0;
+  max-width: 325px;
+}
+.copyright {
+  text-align: right;
+}
+.rot {
+  color: #e0192f;
+  line-height: 2;
+}
+.icon:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1.2;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #e0192f;
+}
+.current a {
+  color: #e0192f;
+}
+/* Basic Dropdown Styles */
+#language-dropdown {
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#language-dropdown li {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+#language-dropdown a {
+  text-decoration: none;
+  color: #000;
+}
+
+.dropdown {
+  position: relative; /* Establish reference point for submenu */
+}
+
+.dropdown-content {
+  display: none; /* Initially hide submenu */
+  position: absolute;
+  background-color: beige;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* Show submenu on hover */
+}
