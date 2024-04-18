@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Neutra Text TF";
+  src: url("NeutraTextTF-Book.woff2") format("woff2"),
+    url("NeutraTextTF-Book.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+.marco {
+  font-family: "Neutra Text TF";
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(255, 255, 255);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  background-color: rgb(31, 31, 31);
+}
+
+.script1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5rem;
+  width: 8rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 5px black;
+  background-color: white;
+}

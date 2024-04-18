@@ -13,7 +13,7 @@
   flex-direction: row;
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 3px 0;
 }
 
 .menu > li {
@@ -127,6 +127,7 @@ nav {
   display: flex;
   justify-content: center;
   margin: 10px 0;
+  font-size: 13px;
 }
 
 li {
