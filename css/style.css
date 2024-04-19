@@ -32,6 +32,7 @@ main {
   flex: 1;
   flex-direction: column;
   justify-content: center;
+  min-width: 350px;
 }
 footer {
   width: 100%;
@@ -40,7 +41,7 @@ footer {
   color: white;
   font-family: "Century Gothic", sans-serif;
   font-size: 10px;
-  padding: 3px;
+  padding: 5px;
 }
 .box1 {
   display: flex;
@@ -49,7 +50,7 @@ footer {
   text-align: center;
   gap: 25px;
   margin: 0 auto;
-  min-width: 500px;
+  min-width: 350px;
   min-height: fit-content;
 }
 .box2 {
@@ -95,12 +96,12 @@ article {
   max-width: 325px;
 }
 .copyright {
-  text-align: right;
+  font-size: 7px;
+  vertical-align: top;
 }
 .rot {
   color: #e0192f;
   line-height: 2;
-  font-weight: bold;
 }
 .icon:hover {
   animation: pulse 1s ease-in-out infinite;
@@ -141,16 +142,27 @@ button {
 
 button:hover {
   color: #e0192f;
-  font-weight: bold;
 }
 
 .flagi {
   width: 12px;
 }
-.current a {
-  color: #e0192f;
-}
 
 .current {
+  border: 2px solid #207245;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #207245;
+}
+.current a {
+  color: #e0192f;
   font-weight: bold;
+}
+
+.flex {
+  display: flex;
+}
+
+.aside {
+  display: flex;
+  min-width: 350px;
 }
