@@ -189,6 +189,9 @@
     flex-grow: 1;
     flex-shrink: 1;
   }
+  .mobile-color {
+    background-color: transparent;
+  }
 }
 
 @media (min-width: 600px) {
