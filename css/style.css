@@ -14,7 +14,7 @@
 
 body {
   font-family: "Lusitana", sans-serif;
-  background-color: rgba(195, 235, 255, 0.2);
+  background-color: #f0f8ff ;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ main {
 footer {
   width: 100%;
   text-align: right;
-  background-color: #207245;
+  background-color:seagreen;
   color: white;
   font-family: "Century Gothic", sans-serif;
   font-size: 10px;
@@ -67,7 +67,7 @@ footer {
 h1 {
   max-width: 160px;
   font-size: 18px;
-  color: #207245;
+  color: rgb(224,42,38);
   margin: 0px;
   padding: 1;
   font-weight: bold;
@@ -75,7 +75,7 @@ h1 {
 
 h2 {
   padding: 10px 0 0;
-  color: #207245;
+  color: seagreen;
 }
 
 .logo {
@@ -103,7 +103,7 @@ article {
   vertical-align: top;
 }
 .rot {
-  color: #e0192f;
+  color: seagreen;
   line-height: 2;
 }
 .icon:hover {
@@ -133,7 +133,7 @@ a {
   transition: color 0.3s ease;
 }
 a:hover {
-  color: #e0192f;
+  color: rgb(224,42,38);
 }
 
 button {
@@ -144,7 +144,7 @@ button {
 }
 
 button:hover {
-  color: #e0192f;
+  color:rgb(224,42,38);
 }
 
 .flagi {
@@ -155,7 +155,7 @@ button:hover {
   font-weight: bold;
 }
 .current a {
-  color: #e0192f;
+  color: rgb(224,42,38);
   font-weight: bold;
 }
 
@@ -169,4 +169,16 @@ button:hover {
 }
 .fett {
   font-weight: bold;
+}
+video {
+  height: 400px;
+}
+.logocentro {
+  width: 15%;
+}
+.centrohaus {
+  width: 50%;
+}
+section {
+  text-align: center;
 }
