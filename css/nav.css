@@ -141,3 +141,6 @@ li {
 ul {
   vertical-align: middle !important;
 }
+nav {
+  z-index: 1000;
+}

@@ -145,6 +145,7 @@ button {
 
 button:hover {
   color:rgb(224,42,38);
+  cursor: pointer;
 }
 
 .flagi {
@@ -182,3 +183,5 @@ video {
 section {
   text-align: center;
 }
+
+

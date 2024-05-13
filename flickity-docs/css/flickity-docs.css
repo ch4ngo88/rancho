@@ -9,7 +9,7 @@
  */
 
  html {
-  /**line-height: 1.15; /* 1 */
+ /** line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */}
 
 /* Sections
@@ -49,11 +49,11 @@ main {
  * 2. Show the overflow in Edge and IE.
  */
 
-hr {
+/* hr {
   box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
+  /** height: 0; /* 1 */
+  /** overflow: visible; 2
+} */
 
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -72,9 +72,9 @@ pre {
  * Remove the gray background on active links in IE 10.
  */
 
-a {
+/* a {
   background-color: transparent;
-}
+} */
 
 /**
  * 1. Remove the bottom border in Chrome 57-
@@ -162,7 +162,7 @@ optgroup,
 select,
 textarea {
   font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
+  /**font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
 }
@@ -194,9 +194,9 @@ select { /* 1 */
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] {
+/* [type="submit"] {
   -webkit-appearance: button;
-}
+} */
 
 /**
  * Remove the inner border and padding in Firefox.
@@ -217,9 +217,9 @@ button::-moz-focus-inner,
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+/* [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
-}
+} */
 
 /**
  * Correct the padding in Firefox.
@@ -287,7 +287,7 @@ textarea {
  */
 
 [type="search"] {
-  -webkit-appearance: textfield; /* 1 */
+ /* -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
 
@@ -819,7 +819,7 @@ html.is-flickity-fullscreen {
   }
 }
 
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 
 /* argument
 ------------------------- */
@@ -1240,30 +1240,30 @@ two columns for large devices
   box-sizing: border-box;
 }
 
-body {
+/* body {
   font-family: 'Texta', sans-serif;
   color: #444;
   line-height: 1.5;
   margin: 0;
   padding: 0;
-}
+} */
 
 /* font size on html for rem */
 html { font-size: 17px; }
 html.export { font-size: 15px; }
 
-a {
+/* a {
   color: #6A6;
   text-decoration: none;
 }
 
 a:hover {
   color: #E90;
-}
+} */
 
-h1, h2, h3 {
+/* h1, h2, h3 {
   line-height: 1.2;
-}
+} */
 
 /* ---- code ---- */
 
@@ -1336,7 +1336,7 @@ tr:nth-child(2) td {
 
 /* ---- main ---- */
 
-.main h2 {
+/* .main h2 {
   font-size: 1.6rem;
   font-weight: normal;
   border-top: 4px double #DDD;
@@ -1349,7 +1349,7 @@ tr:nth-child(2) td {
   border-top: 1px solid #DDD;
   padding-top: 0.8rem;
   margin: 1.4rem 0 0.5rem;
-}
+} */
 
 /* ---- logger ---- */
 
@@ -2170,8 +2170,8 @@ code .flickity { text-decoration: underline; }
 /* in-use-carousel
 ------------------------- */
 
-.in-use-carousel {
-}
+/* .in-use-carousel {
+} */
 
 .in-use-carousel__item {
   width: 400px;
@@ -2248,8 +2248,8 @@ code .flickity { text-decoration: underline; }
   font-weight: bold;
 }
 
-.site-nav__item--homepage a {
-}
+/* .site-nav__item--homepage a {
+} */
 
 .site-nav__item a:hover {
   background: #E5A;
@@ -2378,9 +2378,9 @@ code .flickity { text-decoration: underline; }
   width: 100%;
 }
 
-.event-table th,
+/* .event-table th,
 .event-table td {
-}
+} */
 
 .event-table td {
   font-size: 0.9rem;
