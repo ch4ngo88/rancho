@@ -69,7 +69,7 @@ h1 {
   font-size: 18px;
   color: rgb(224,42,38);
   margin: 0px;
-  padding: 1;
+  padding: 0;
   font-weight: bold;
 }
 
@@ -86,7 +86,6 @@ h2 {
 }
 .icon {
   height: 24px;
-  font-weight: 24px;
 }
 .gruppe {
   width: 400px;
@@ -118,7 +117,7 @@ article {
 
   50% {
     transform: scale(1.1);
-    opacity: 1.2;
+    opacity: 1.0;
   }
 
   100% {
@@ -185,7 +184,7 @@ section {
 }
 
 .impressum {
-  font-size: 8px;
+  font-size: 9px;
 }
 h4 {
   color: seagreen;
@@ -193,4 +192,11 @@ h4 {
 .neuza {
   display: flex;
   align-items: center;
+}
+.articlemobile2 {
+  width: 400px;
+  }
+
+.zeitung {
+  transform: translateX(-35px);
 }
