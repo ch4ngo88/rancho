@@ -89,7 +89,7 @@ h2 {
   font-weight: 24px;
 }
 .gruppe {
-  height: 250px;
+  height: 400px;
 }
 article {
   padding: 15px 0;
@@ -184,4 +184,9 @@ section {
   text-align: center;
 }
 
-
+.impressum {
+  font-size: 8px;
+}
+h4 {
+  color: seagreen;
+}
