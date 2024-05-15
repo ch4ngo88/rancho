@@ -198,5 +198,8 @@ h4 {
   }
 
 .zeitung {
-  transform: translateX(-35px);
+  transform: translateX(-30px);
+}
+.imp {
+  padding-right: 5px;
 }
