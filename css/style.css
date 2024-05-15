@@ -3,10 +3,11 @@
   padding: 0;
   margin: 0 auto;
 }
+
 @font-face {
   font-family: "Lusitana";
   src: url("fonts/lusitana/Lusitana.woff2") format("woff2"),
-    url("fonts/lusitana/Lusitana.woff") format("woff");
+       url("fonts/lusitana/Lusitana.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -14,19 +15,21 @@
 
 body {
   font-family: "Lusitana", sans-serif;
-  background-color: #f0f8ff ;
+  background-color: #f0f8ff;
   font-size: 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 5px 0px;
+  padding: 5px 0;
 }
+
 header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
 }
+
 main {
   display: flex;
   flex: 1;
@@ -35,15 +38,17 @@ main {
   min-width: 400px;
   margin: 0;
 }
+
 footer {
   width: 100%;
   text-align: right;
-  background-color:seagreen;
+  background-color: seagreen;
   color: white;
   font-family: "Century Gothic", sans-serif;
   font-size: 10px;
   padding: 5px;
 }
+
 .box1 {
   display: flex;
   justify-content: center;
@@ -54,21 +59,24 @@ footer {
   min-width: 350px;
   min-height: fit-content;
 }
+
 .box2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
 }
+
 .box3 {
   display: flex;
   gap: 5px;
 }
+
 h1 {
   max-width: 160px;
   font-size: 18px;
-  color: rgb(224,42,38);
-  margin: 0px;
+  color: rgb(224, 42, 38);
+  margin: 0;
   padding: 0;
   font-weight: bold;
 }
@@ -84,27 +92,37 @@ h2 {
   height: 98px;
   margin: 0;
 }
+
 .icon {
   height: 24px;
 }
+
 .gruppe {
   width: 400px;
 }
+
 article {
   padding: 15px 0;
   max-width: 550px;
   min-width: 375px;
-
   text-align: justify;
 }
+
+.footer {
+  font-size: 10px;
+}
+
+
 .copyright {
   font-size: 7px;
   vertical-align: top;
 }
+
 .rot {
   color: seagreen;
   line-height: 2;
 }
+
 .icon:hover {
   animation: pulse 1s ease-in-out infinite;
 }
@@ -114,12 +132,10 @@ article {
     transform: scale(1);
     opacity: 1;
   }
-
   50% {
     transform: scale(1.1);
     opacity: 1.0;
   }
-
   100% {
     transform: scale(1);
     opacity: 1;
@@ -131,8 +147,9 @@ a {
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 a:hover {
-  color: rgb(224,42,38);
+  color: rgb(224, 42, 38);
 }
 
 button {
@@ -143,7 +160,7 @@ button {
 }
 
 button:hover {
-  color:rgb(224,42,38);
+  color: rgb(224, 42, 38);
   cursor: pointer;
 }
 
@@ -154,8 +171,9 @@ button:hover {
 .current {
   font-weight: bold;
 }
+
 .current a {
-  color: rgb(224,42,38);
+  color: rgb(224, 42, 38);
   font-weight: bold;
 }
 
@@ -167,18 +185,23 @@ button:hover {
   display: flex;
   min-width: 350px;
 }
+
 .fett {
   font-weight: bold;
 }
+
 video {
   height: 400px;
 }
+
 .logocentro {
   width: 15%;
 }
+
 .centrohaus {
   width: 50%;
 }
+
 section {
   text-align: center;
 }
@@ -186,25 +209,54 @@ section {
 .impressum {
   font-size: 9px;
 }
+
 h4 {
   color: seagreen;
 }
+
 .neuza {
   display: flex;
   align-items: center;
 }
+
 .articlemobile2 {
   width: 400px;
-  }
+}
 
 .zeitung {
   transform: translateX(-30px);
   text-align: center;
 }
+
 .imp {
   padding-right: 5px;
+  font-size: 9px;
+  vertical-align: top;
 }
+
 .cafe {
   font-size: 10px;
+  font-style: italic;
+}
+
+.festas-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.festasfoto {
+  width: 200px;
+  height: auto;
+}
+
+.textfestas {
+  max-width: 300px;
+  padding: 0;
+  margin: 0;
+}
+.black {
+  color: black;
   font-style: italic;
 }
