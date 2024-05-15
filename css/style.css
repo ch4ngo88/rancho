@@ -199,7 +199,12 @@ h4 {
 
 .zeitung {
   transform: translateX(-30px);
+  text-align: center;
 }
 .imp {
   padding-right: 5px;
+}
+.cafe {
+  font-size: 10px;
+  font-style: italic;
 }
