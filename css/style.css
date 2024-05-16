@@ -242,10 +242,6 @@ h4 {
   align-items: flex-start;
 }
 
-.festasfoto {
-  width: 200px;
-  height: auto;
-}
 
 .textfestas {
   max-width: 300px;
@@ -253,6 +249,46 @@ h4 {
   margin: 0;
 }
 .black {
-  color: black;
+  color:blue;
   font-style: italic;
+}
+
+.festasfoto {
+  width: 200px;
+  height: auto;
+  display: inline-block; /* Damit das Bild inline bleibt */
+  overflow: hidden; /* Verhindert, dass der hinzugefügte Rand sichtbar wird */
+}
+
+.festasfoto img {
+  width: 100%; /* Damit das Bild die Breite des Containers ausfüllt */
+  height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
+  transition: border-color 0.3s ease; /* Übergangseffekt für den Rahmen */
+  border: 2px solid transparent; /* Transparenter Rand, um Platz für den Hover-Rand zu schaffen */
+}
+
+.festasfoto:hover img {
+  border-color: red; /* Roter Rand beim Hovern */
+}
+.news {
+  display: grid;
+}
+
+.news2 {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+.news2 img,
+.news2 video {
+  width: 100px; /* Breite der Bilder und des Videos auf 100px festlegen */
+  height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
+  transition: border-color 0.3s ease; /* Übergangseffekt für den Rahmen */
+  border: 2px solid transparent; /* Transparenter Rand, um Platz für den Hover-Rand zu schaffen */
+}
+
+.news2 a:hover img,
+.news2 a:hover video {
+  border-color: red; /* Roter Rand beim Hovern */
 }
