@@ -16,7 +16,7 @@
 body {
   font-family: "Lusitana", sans-serif;
   background-color: #f0f8ff;
-  font-size: 16px;
+  font-size: 17px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -45,7 +45,7 @@ footer {
   background-color: seagreen;
   color: white;
   font-family: "Century Gothic", sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   padding: 5px;
 }
 
@@ -74,7 +74,7 @@ footer {
 
 h1 {
   max-width: 160px;
-  font-size: 18px;
+  font-size: 19px;
   color: rgb(224, 42, 38);
   margin: 0;
   padding: 0;
@@ -109,12 +109,12 @@ article {
 }
 
 .footer {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 
 .copyright {
-  font-size: 7px;
+  font-size: 8px;
   vertical-align: top;
 }
 
@@ -153,7 +153,7 @@ a:hover {
 }
 
 button {
-  font-size: 12px;
+  font-size: 13px;
   transition: all 0.3s ease;
   padding: 1px 2px;
   font-weight: lighter;
@@ -203,7 +203,7 @@ section {
 }
 
 .impressum {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 h4 {
@@ -226,12 +226,12 @@ h4 {
 
 .imp {
   padding-right: 5px;
-  font-size: 9px;
+  font-size: 10px;
   vertical-align: top;
 }
 
 .cafe {
-  font-size: 10px;
+  font-size: 11px;
   font-style: italic;
 }
 
