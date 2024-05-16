@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com; 
     style-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com; 
     img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de; 
     font-src 'self' data: https://maps.gstatic.com; 
-    frame-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de; 
-    child-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de;">
+    frame-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com; 
+    child-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de;
+    connect-src 'self' ws://127.0.0.1:3001 https://www.facebook.com;">
+    <meta http-equiv="Permissions-Policy" content="usb=*, battery=*">
+    <meta property="og:image" content="https://tradicoesportuguesas.com/bilder/offen.jpeg">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/frameset.css">
