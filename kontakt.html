@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx"></script>
     <script>
-    function onSubmit(token) {
-      document.getElementById("contact-form").submit();
-    }
-  </script>
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
+    </script>
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
     script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; 
@@ -110,7 +110,6 @@
 <br>
 <br>
 <hr>
-
 <div class="contact-container">
   <h2 class="formu">Kontaktieren Sie uns</h2>
   <form action="https://formspree.io/f/xyyrvvyd" method="POST" id="contact-form">
@@ -124,7 +123,7 @@
     <textarea id="message" name="message" rows="4" required></textarea>
     
     <button class="g-recaptcha" data-sitekey="6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx" data-callback="onSubmit" data-action="submit">
-      Submit
+      Senden
     </button>
   </form>
 </div>

@@ -2,18 +2,23 @@
 <html lang="PT">
   <head>
     <meta charset="UTF-8" >
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx"></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
+    </script>
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com; 
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; 
     style-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com; 
-    img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de; 
+    img-src 'self' data: https://maps.googleapis.com https://maps.gstatic.com https://www.besucherzaehler-kostenlos.de https://www.gstatic.com/recaptcha/; 
     font-src 'self' data: https://maps.gstatic.com; 
     frame-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de https://www.facebook.com; 
     child-src 'self' https://www.google.com https://www.besucherzaehler-kostenlos.de;
-    connect-src 'self' ws://127.0.0.1:3001 https://www.facebook.com https://formspree.io;
+    connect-src 'self' ws://127.0.0.1:3001 https://www.facebook.com https://formspree.io https://www.gstatic.com/recaptcha/;
     form-action 'self' https://formspree.io;">
 <meta http-equiv="Permissions-Policy" content="usb=*, battery=*">
-
     <meta property="og:image" content="https://tradicoesportuguesas.com/bilder/offen.jpeg">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
@@ -103,22 +108,20 @@
 <br>
 <hr>
 <div class="contact-container">
-  <h2 class="formu">Entre em contacto</h2>
-  <form
-    action="https://formspree.io/f/xyyrvvyd"
-    method="POST">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name" required>
-      
-      <label for="email">E-Mail:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="message">Mensagem:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      
-      <div class="g-recaptcha" data-sitekey="6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx"></div>
-      
-      <button type="submit">Enviar</button>
+  <h2 class="formu">Entre em contacto </h2>
+  <form action="https://formspree.io/f/xyyrvvyd" method="POST" id="contact-form">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" required>
+    
+    <label for="email">E-Mail:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <label for="message">Mensagem:</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    
+    <button class="g-recaptcha" data-sitekey="6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx" data-callback="onSubmit" data-action="submit">
+      Enviar
+    </button>
   </form>
 </div>
         </article>
