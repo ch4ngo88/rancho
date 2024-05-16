@@ -104,7 +104,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
+  /* 1 */
   font-size: 1em; /* 2 */
 }
 
@@ -161,7 +161,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
+   /* 1 */
   /**font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
@@ -632,7 +632,6 @@ html.is-flickity-fullscreen {
   border-radius: 50%;
   text-align: center;
   color: white;
-  font-family: Consolas, Georgia, serif;
   font-style: italic;
 }
 
@@ -905,7 +904,6 @@ html.is-flickity-fullscreen {
   content: counter(cla-h3) '.';
   margin-right: 0.25rem;
   color: #888;
-  font-family: 'Texta', sans-serif;
 }
 
 .cla__part {
@@ -1268,7 +1266,6 @@ a:hover {
 /* ---- code ---- */
 
 pre, code, kbd {
-  font-family: Consolas, Menlo, monospace;
   font-size: 14px;
   background: #FAFAFA;
   border: 1px solid #DDD;
@@ -1447,17 +1444,15 @@ code .flickity { text-decoration: underline; }
   http://css-tricks.com/snippets/css/using-font-face/ */
 
 /* Texta Heavy */
-@font-face {
-  font-family: 'Texta';
+/* @font-face {
   font-weight: bold;
   font-style: normal;
   src: url('../fonts/2D333F_0_0.woff2') format('woff2'),
     url('../fonts/2D333F_0_0.woff') format('woff');
-}
+} */
 
 /* Texta Italic */
-@font-face {
-  font-family: 'Texta';
+/* @font-face {
   font-weight: normal;
   font-style: italic;
   src: url('../fonts/2D333F_1_0.woff2') format('woff2'),
@@ -1465,11 +1460,10 @@ code .flickity { text-decoration: underline; }
 }
 
 /* Texta Regular */
-@font-face {
-  font-family: 'Texta';
+/* @font-face {
   src: url('../fonts/2D333F_2_0.woff2') format('woff2'),
     url('../fonts/2D333F_2_0.woff') format('woff');
-}
+} */ */
 
 /* big link
    big buttons at the top of the homepage
@@ -1572,7 +1566,6 @@ code .flickity { text-decoration: underline; }
   border-radius: 50%;
   text-align: center;
   color: white;
-  font-family: Consolas, Georgia, serif;
   font-style: italic;
 }
 
@@ -2844,7 +2837,7 @@ td.event-table__time {
 
 * { box-sizing: border-box; }
 
-body { font-family: sans-serif; }
+
 
 /* .carousel {
   background: black;
