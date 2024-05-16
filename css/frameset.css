@@ -45,9 +45,9 @@
 .mobile-75 {
   width: 75%;
 }
-.mobile-50 {
+/* .mobile-50 {
   width: 50%;
-}
+} */
 .mobile-25 {
   width: 25%;
 }
@@ -196,8 +196,10 @@
     max-width: 325px;
     min-width: 325px;
   }
+  .mobile-50 {
+    width: 50% !important;
 }
-
+}
 @media (min-width: 600px) {
   .desktop-hidden {
     display: none !important;

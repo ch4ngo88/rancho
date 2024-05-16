@@ -247,6 +247,7 @@ h4 {
   max-width: 300px;
   padding: 0;
   margin: 0;
+  min-width: 135px;
 }
 .black {
   color:blue;
@@ -291,4 +292,37 @@ h4 {
 .news2 a:hover img,
 .news2 a:hover video {
   border-color: red; /* Roter Rand beim Hovern */
+}
+.contact-container {
+  padding: 20px;
+  /* border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  max-width: 600px;
+  width: 100%;
+  
+}
+
+.contact-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  ;
+}
+
+.contact-container label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.contact-container input, 
+.contact-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+.formu {
+  color: seagreen !important;
 }
