@@ -78,9 +78,27 @@
       </ul></nav>
     </header>
     <main>
-      <img src="bilder/QR Code.jpeg" alt="Centro" height="100px">
-      <br>       
+      <img src="bilder/QR Code.jpeg" alt="Centro" height="100px">  
         <article class="articlemobile">
+          <div class="contact-container">
+            <h2 class="formu">Entre em contacto connosco</h2>
+            <form action="https://formspree.io/f/xyyrvvyd" method="POST" id="contact-form">
+              <label for="name">Nome:</label>
+              <input type="text" id="name" name="name" required>
+              
+              <label for="email">E-Mail:</label>
+              <input type="email" id="email" name="email" required>
+              
+              <label for="message">Mensagem:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+              
+              <button class="g-recaptcha" data-sitekey="6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx" data-callback="onSubmit" data-action="submit">
+                Enviar
+              </button>
+            </form>
+          </div>
+          <hr>
+          <br>
           <h4>Rancho Folclórico Tradições Portuguesas de
             Harburg</h4>
             <br>
@@ -107,23 +125,30 @@
 <br>
 <br>
 <hr>
-<div class="contact-container">
-  <h2 class="formu">Entre em contacto </h2>
-  <form action="https://formspree.io/f/xyyrvvyd" method="POST" id="contact-form">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
-    
-    <label for="email">E-Mail:</label>
-    <input type="email" id="email" name="email" required>
-    
-    <label for="message">Mensagem:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
-    
-    <button class="g-recaptcha" data-sitekey="6LdPL98pAAAAAJwj3F1POR3IyIn_yCA3mPsTdVVx" data-callback="onSubmit" data-action="submit">
-      Enviar
-    </button>
-  </form>
+<button class="accordion">Links úteis<span class="arrow"></span></button>
+<div class="panel">
+  <a href="rfptv.pt"><img src="bilder/links/MYvhCGImba3MPCwmRu2pZgGkFhy2L6tkTLsSO3LN.png" alt="Logo 1">Canal tv Digital do Folclore de Portugal </a>
+  <a href="folclore.pt"><img src="bilder/links/cropped-portal-logo.jpg" alt="Logo 2">Folclore de Portugal – O Portal do Folclore Português</a>
+  <a href="ffp.pt"><img src="bilder/links/logotipo.png" alt="Logo 3">Federação do Folclore Português</a>
+  <a href="#portaldascomunidades.mne.gov.pt"><img src="bilder/links/pdc_66x66.png" alt="Logo 3">Portal das Comunidades Portuguesas</a>
+  <a href="missao-portuguesa-hamburg.de"><img src="bilder/links/logotipo_missao.jpg" alt="Logo 3">Missão Católica de Língua Portuguesa de Hamburgo</a>
+  <a href="https://www.instagram.com/musicoportuga"><img src="bilder/links/417154003_7628155877197537_3387848453821547182_n.jpg" alt="Logo 3">Tiago Pinheiro - músico portuga de Hamburgo</a>
 </div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
         </article>
     </main>
     <aside>
