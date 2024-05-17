@@ -361,6 +361,7 @@ https://flickity.metafizzy.co
   overflow: hidden;
   position: relative;
   height: 100%;
+  background-color: #f0f8ff;
 }
 
 .flickity-slider {
@@ -372,7 +373,7 @@ https://flickity.metafizzy.co
 /* draggable */
 
 .flickity-enabled.is-draggable {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: White;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;

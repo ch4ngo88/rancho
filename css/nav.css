@@ -57,7 +57,7 @@
 }
 
 #menu-toggle:checked + .menu-button-container .menu-button::before {
-  margin-top: 0px;
+  margin-top: 0;
   transform: rotate(405deg);
 }
 
@@ -66,7 +66,7 @@
 }
 
 #menu-toggle:checked + .menu-button-container .menu-button::after {
-  margin-top: 0px;
+  margin-top: 0;
   transform: rotate(-405deg);
 }
 
@@ -94,7 +94,6 @@
   #menu-toggle:checked ~ .menu li {
     border: 1px solid #333;
     height: 61px;
-
     transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
   #menu-toggle:checked a {
@@ -114,15 +113,13 @@
   }
 }
 
-/* ------------------------------------------ */
-
 nav {
   width: 100%;
   text-align: center;
-  background-color:seagreen;
+  background-color: seagreen;
   color: white;
   vertical-align: middle;
-  text-align: center;
+  z-index: 1000;
 }
 
 .navmenu {
@@ -138,9 +135,7 @@ li {
   margin: 0 28px;
   vertical-align: middle !important;
 }
+
 ul {
   vertical-align: middle !important;
-}
-nav {
-  z-index: 1000;
 }
