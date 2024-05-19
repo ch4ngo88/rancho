@@ -269,7 +269,7 @@ h4 {
 }
 
 .festasfoto:hover img {
-  border-color: red; /* Roter Rand beim Hovern */
+  border-color: rgb(224, 42, 38); /* Roter Rand beim Hovern */
 }
 .news {
   display: grid;
@@ -291,7 +291,7 @@ h4 {
 
 .news2 a:hover img,
 .news2 a:hover video {
-  border-color: red; /* Roter Rand beim Hovern */
+  border-color: rgb(224, 42, 38); /* Roter Rand beim Hovern */
 }
 .contact-container {
   padding: 10px;
@@ -375,4 +375,8 @@ h4 {
 
 .active .arrow::before {
   content: "\25B2"; 
+}
+h5 {
+  color: rgb(224, 42, 38);
+  font-size: 15px;
 }
