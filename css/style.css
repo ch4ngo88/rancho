@@ -283,7 +283,7 @@ h4 {
 
 .news2 img,
 .news2 video {
-  width: 100px; /* Breite der Bilder und des Videos auf 100px festlegen */
+  width: 85px; /* Breite der Bilder und des Videos auf 100px festlegen */
   height: auto; /* Automatische Höhe, um das Seitenverhältnis beizubehalten */
   transition: border-color 0.3s ease; /* Übergangseffekt für den Rahmen */
   border: 2px solid transparent; /* Transparenter Rand, um Platz für den Hover-Rand zu schaffen */
