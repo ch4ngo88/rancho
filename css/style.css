@@ -380,3 +380,32 @@ h5 {
   color: rgb(224, 42, 38);
   font-size: 15px;
 }
+
+.video-title {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.8em;
+  color: #333;
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.video-container video {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-container video:hover {
+  transform: scale(1.03);
+}
