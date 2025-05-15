@@ -1,0 +1,23 @@
+@layer components {
+  /* Base button styles with consistent hover */
+  .button-base {
+    @apply min-h-[44px] min-w-[44px] transition-all duration-300 hover:scale-[1.02] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .button-primary {
+    @apply button-base relative min-w-[200px] rounded-lg bg-seagreen px-6 py-3 text-center text-base font-medium text-white shadow-md hover:bg-seagreen/90 hover:shadow-lg focus:ring-seagreen/50;
+  }
+
+  .button-secondary {
+    @apply button-base relative min-w-[200px] rounded-lg bg-portuguesered px-6 py-3 text-center text-base font-medium text-white shadow-md hover:bg-portuguesered/90 hover:shadow-lg focus:ring-portuguesered/50;
+  }
+
+  .flag-button {
+    @apply button-base flex items-center gap-1 rounded-full bg-gray-50 px-3 py-1 hover:bg-gray-200 focus:ring-gray-300;
+  }
+
+  /* Keep existing .flag-button.current styles */
+  .flag-button.current {
+    @apply bg-seagreen text-white after:hidden;
+  }
+}

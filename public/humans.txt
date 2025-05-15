@@ -1,0 +1,13 @@
+
+/* TEAM */
+Developer: Marco da Silva Dácio
+Contact: contact@tradicoesportuguesas.com
+Instagram: @tradicoesportuguesas.hamburg
+From: Hamburg, Germany
+
+/* SITE */
+Last update: 2025-04-16
+Language: German, Portuguese
+Doctype: HTML5
+IDE: Visual Studio Code
+Tools: React, Vite, Tailwind CSS, ShadcnUI

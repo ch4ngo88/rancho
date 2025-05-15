@@ -1,0 +1,40 @@
+@layer components {
+  .current {
+    @apply relative font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-white;
+  }
+
+  .icon {
+    @apply h-6 w-6 text-seagreen transition-all duration-300 hover:scale-125 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-seagreen focus:ring-offset-2;
+  }
+
+  .gruppo-image {
+    @apply mx-auto w-full max-w-md rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl;
+  }
+
+  .card-hover {
+    @apply bg-white/95 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-seagreen/50;
+  }
+
+  .section-title {
+    @apply relative mb-6 inline-block text-2xl font-bold text-seagreen after:absolute after:bottom-0 after:left-0 after:h-1 after:w-3/4 after:rounded-full after:bg-portuguesered after:content-[''];
+  }
+
+  .nav-link {
+    @apply relative overflow-hidden py-1.5 text-base font-medium text-gray-900 transition-colors duration-300 before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-0 before:bg-portuguesered before:transition-all before:duration-300 hover:text-portuguesered hover:before:w-full focus:outline-none focus:ring-2 focus:ring-seagreen/50;
+  }
+
+  /* Glass-Effekt mit verbessertem Kontrast */
+  .glass-card {
+    @apply rounded-xl border border-gray-200 bg-white/95 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-xl;
+  }
+
+  /* Standardized link hover animation */
+  .link-hover {
+    @apply relative rounded-sm transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-right after:scale-x-0 after:transform after:bg-seagreen after:transition-transform after:duration-300 hover:text-seagreen hover:after:origin-bottom-left hover:after:scale-x-100 focus:text-seagreen focus:outline-none focus:ring-2 focus:ring-seagreen/50 focus:after:scale-x-100;
+  }
+
+  /* Basic hover effect for icons and small interactive elements */
+  .hover-effect {
+    @apply rounded-sm transition-all duration-300 hover:scale-[1.02] hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-seagreen/50;
+  }
+}

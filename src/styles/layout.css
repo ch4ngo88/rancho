@@ -1,0 +1,67 @@
+@layer components {
+  @media (max-width: 767px) {
+    .footer-content {
+      @apply pl-4 text-left;
+    }
+
+    .footer-contact-info > div {
+      @apply flex items-start;
+    }
+
+    .footer-separator {
+      @apply my-4 h-px w-full bg-white;
+    }
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-white/20 bg-white/90 shadow-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* Image optimization styles */
+  .lazy-image {
+    @apply transition-opacity duration-300;
+  }
+
+  .lazy-image-loading {
+    @apply opacity-0;
+  }
+
+  .lazy-image-loaded {
+    @apply opacity-100;
+  }
+
+  /* Placeholder for images that are loading */
+  .image-placeholder {
+    @apply animate-pulse rounded bg-gray-200;
+  }
+
+  /* Content loading placeholder */
+  .content-placeholder {
+    @apply min-h-[60vh] bg-white;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-seagreen;
+  }
+
+  /* Optimized image container */
+  .optimized-image {
+    @apply relative overflow-hidden;
+  }
+
+  .optimized-image img {
+    @apply transition-opacity duration-300;
+  }
+
+  /* Mobile header styles */
+  @media (max-width: 767px) {
+    .header-container {
+      @apply relative;
+    }
+
+    .mobile-nav-button {
+      @apply z-30;
+    }
+  }
+}
