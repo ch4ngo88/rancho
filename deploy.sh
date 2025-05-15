@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 echo "🧠 Checking current branch..."
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
