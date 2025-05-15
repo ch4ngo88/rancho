@@ -191,7 +191,7 @@ export const useMembersData = (): MemberData[] => {
       category: 'dancers',
       hoverText: 'Minho',
     },
-      {
+    {
       id: 19,
       name: 'Jessica Gonçalves',
       role: language === 'pt' ? 'Dançarina' : 'Tänzerin',
@@ -200,7 +200,7 @@ export const useMembersData = (): MemberData[] => {
       category: 'dancers',
       hoverText: 'Minho',
     },
-     {
+    {
       id: 20,
       name: 'Sofia Neto Julião Faria',
       role: language === 'pt' ? 'Dançarina' : 'Tänzerin',
@@ -209,7 +209,7 @@ export const useMembersData = (): MemberData[] => {
       category: 'dancers',
       hoverText: 'Beira Litoral',
     },
-     {
+    {
       id: 21,
       name: 'Mariana Sofia Lassen Patrício',
       role: language === 'pt' ? 'Dançarina' : 'Tänzerin',
