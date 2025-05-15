@@ -10,7 +10,6 @@ interface PreloadOptions {
   fetchPriority?: 'high' | 'low' | 'auto'
 }
 
-
 const withBaseUrl = (href: string) =>
   href.startsWith('http') ? href : `${import.meta.env.BASE_URL}${href.replace(/^\/+/, '')}`
 
@@ -39,11 +38,11 @@ export const prefetchResource = (href: string, options: PreloadOptions): HTMLLin
 
   const normalize = (href: string) => new URL(href, location.origin).href
 
-const existingPrefetch = Array.from(document.querySelectorAll('link[rel="prefetch"]'))
-  .find((el): el is HTMLLinkElement =>
-    el instanceof HTMLLinkElement && normalize(el.href) === normalize(fullHref)
+  const existingPrefetch = Array.from(document.querySelectorAll('link[rel="prefetch"]')).find(
+    (el): el is HTMLLinkElement =>
+      el instanceof HTMLLinkElement && normalize(el.href) === normalize(fullHref),
   )
-  
+
   if (existingPrefetch) return existingPrefetch as HTMLLinkElement
 
   const link = document.createElement('link')
@@ -58,7 +57,6 @@ const existingPrefetch = Array.from(document.querySelectorAll('link[rel="prefetc
 
   return link
 }
-
 
 export const prefetchImage = (src: string): void => {
   prefetchResource(src, { as: 'image' })
@@ -101,7 +99,6 @@ export const usePagePreload = (resources: Array<{ href: string; options: Preload
   }, [resources])
 }
 const isPageRoute = (url: string) => !url.includes('.')
-
 
 export const preloadRoute = (route: string) => {
   prefetchResource(route, {
