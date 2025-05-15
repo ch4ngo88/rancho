@@ -4,15 +4,15 @@
   "short_name": "Tradições",
   "description": "Bewahrung der portugiesischen Kultur in Hamburg seit 1979",
   "lang": "de",
-  "start_url": "/tradicoes-harburg-folclore-web/",
-  "scope": "/tradicoes-harburg-folclore-web/",
+  "start_url": "/rancho/",
+  "scope": "/rancho/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#1a6741",
   "icons": [
     {
-      "src": "/tradicoes-harburg-folclore-web/images/android-chrome-192x192.png",
+      "src": "/rancho/images/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
