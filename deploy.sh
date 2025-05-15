@@ -39,12 +39,20 @@ cp -r dist/* $DEPLOY_DIR
 cd $DEPLOY_DIR
 git add .
 
-# 🧹 Entfernte Dateien mitcommitten (z. B. alte Bundles wegwerfen)
-git ls-files --deleted -z | xargs -0 git rm
+# 🧹 Entfernte Dateien sauber mitnehmen
+DELETED=$(git ls-files --deleted)
+if [ -n "$DELETED" ]; then
+  echo "🧹 Entfernte Dateien werden gelöscht:"
+  echo "$DELETED"
+  echo "$DELETED" | xargs git rm
+else
+  echo "✅ Keine entfernten Dateien zu löschen"
+fi
 
 git commit -m "🚀 live deploy $(date +%F_%H-%M-%S)" || echo "✅ Nichts Neues zu committen"
 git push origin gh-pages
 cd -
+
 
 echo "🧹 Aufräumen..."
 git worktree remove $DEPLOY_DIR -f || true
