@@ -1,6 +1,6 @@
 import React from 'react'
 
-type ResourceType = 'image' | 'script' | 'style' | 'font' | 'document'
+export type ResourceType = 'image' | 'script' | 'style' | 'font' | 'document' | 'fetch'
 
 interface PreloadOptions {
   as: ResourceType
@@ -94,4 +94,7 @@ export const usePagePreload = (resources: Array<{ href: string; options: Preload
 
 export const preloadRoute = (route: string) => {
   prefetchResource(route, { as: 'document' })
+}
+export const isValidResourceType = (type: unknown): type is ResourceType => {
+  return ['script', 'style', 'font', 'image', 'document', 'fetch'].includes(type as string)
 }

@@ -114,7 +114,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
         {/* ---------- Headline & CTA ---------- */}
         <div className="space-y-4 text-center text-white md:w-3/5 md:text-left">
           <h2 className="hero-stagger-1 font-lusitana text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-            {language === 'pt' ? 'Tradições Portuguesas' : 'Portugiesische Traditionen'}
+            {language === 'pt' ? 'Tradições Portuguesas' : 'Tradições Portuguesas'}
           </h2>
           <p className="hero-stagger-2 max-w-xl font-lusitana text-xl italic opacity-90 md:text-2xl">
             {language === 'pt' ? (

@@ -141,7 +141,7 @@ export const useMembersData = (): MemberData[] => {
       name: 'Jessica Perreira Baptista',
       role: language === 'pt' ? 'Dançarina' : 'Tänzerin',
       regularImage: asset('images/members/jessicaB1.webp'),
-      costumeImage: asset('images/members/jessicaB2.webp'),
+      costumeImage: asset('images/members/placeholder.svg'),
       category: 'dancers',
       hoverText: 'Ribatejo',
     },

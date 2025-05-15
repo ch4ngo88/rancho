@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { prefetchResource } from '../utils/preloadManager'
+import { isValidResourceType } from '../utils/preloadManager'
 
 // Zentrale Typdefinition für gültige resource types
-export type ResourceType = 'script' | 'style' | 'font' | 'image' | 'document'
+import type { ResourceType } from '../utils/preloadManager'
 
-function isValidResourceType(type: unknown): type is ResourceType {
-  return ['script', 'style', 'font', 'image', 'document'].includes(type as string)
-}
+
 
 interface PreloadLinkProps {
   to: string
@@ -39,7 +38,11 @@ const PreloadLink: React.FC<PreloadLinkProps> = ({
   const prefetchLinkedResources = useCallback(() => {
     if (!shouldPrefetch) return
 
-    prefetchResource(to, { as: 'document' })
+    const isPageRoute = (url: string) => !url.includes('.')
+
+prefetchResource(to, {
+  as: isPageRoute(to) ? 'fetch' : 'document'
+})
 
     preloadResources.forEach((resource) => {
       prefetchResource(resource.href, {
