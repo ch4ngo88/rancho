@@ -38,6 +38,10 @@ cp -r dist/* $DEPLOY_DIR
 # Commit & Push
 cd $DEPLOY_DIR
 git add .
+
+# 🧹 Entfernte Dateien mitcommitten (z. B. alte Bundles wegwerfen)
+git ls-files --deleted -z | xargs -0 git rm
+
 git commit -m "🚀 live deploy $(date +%F_%H-%M-%S)" || echo "✅ Nichts Neues zu committen"
 git push origin gh-pages
 cd -

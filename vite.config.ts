@@ -6,4 +6,7 @@ export default defineConfig({
   base: '/',
   server: { host: '::', port: 8080 },
   plugins: [react(), tsconfigPaths()],
+  build: {
+    emptyOutDir: true, // 💥 dist/ wird vor dem Build gelöscht
+  },
 })
