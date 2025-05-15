@@ -6,8 +6,6 @@ import { isValidResourceType } from '../utils/preloadManager'
 // Zentrale Typdefinition für gültige resource types
 import type { ResourceType } from '../utils/preloadManager'
 
-
-
 interface PreloadLinkProps {
   to: string
   children: React.ReactNode
@@ -40,9 +38,9 @@ const PreloadLink: React.FC<PreloadLinkProps> = ({
 
     const isPageRoute = (url: string) => !url.includes('.')
 
-prefetchResource(to, {
-  as: isPageRoute(to) ? 'fetch' : 'document'
-})
+    prefetchResource(to, {
+      as: isPageRoute(to) ? 'fetch' : 'document',
+    })
 
     preloadResources.forEach((resource) => {
       prefetchResource(resource.href, {
