@@ -1,13 +1,23 @@
-
 /* TEAM */
 Developer: Marco da Silva Dácio
-Contact: contact@tradicoesportuguesas.com
+Email: g.c.r.f.p@hotmail.com
+Contact: https://tradicoesportuguesas.com/#/contact
 Instagram: @tradicoesportuguesas.hamburg
-From: Hamburg, Germany
+Location: Hamburg, Germany
 
 /* SITE */
-Last update: 2025-04-16
-Language: German, Portuguese
+Last update: 2025-05-15
+Languages: German, Portuguese
 Doctype: HTML5
-IDE: Visual Studio Code
-Tools: React, Vite, Tailwind CSS, ShadcnUI
+Framework: React
+Bundler: Vite
+Styling: Tailwind CSS, Shadcn UI
+Hosting: GitHub Pages + Custom Domain
+Repository: https://github.com/ch4ngo88/rancho
+
+/* CREDITS */
+Thanks to: Rancho Folclórico Tradições Portuguesas Hamburg
+Made with ❤️, music, and way too much coffee.
+
+/* ROBOTS */
+If you're a bot: be nice. We see you. 👀
