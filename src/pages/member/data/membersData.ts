@@ -211,7 +211,7 @@ export const useMembersData = (): MemberData[] => {
     },
     {
       id: 21,
-      name: 'Mariana Sofia Lassen Patrício',
+      name: 'Mariana Sofia Lasch Patrício',
       role: language === 'pt' ? 'Dançarina' : 'Tänzerin',
       regularImage: asset('images/members/mariana21.webp'),
       costumeImage: asset('images/members/placeholder.svg'),
