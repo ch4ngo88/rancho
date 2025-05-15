@@ -1,5 +1,5 @@
 export const asset = (p: string) => {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '') // z.B. "/tradicoes-harburg-folclore-web"
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '')
   const cleanedPath = p.replace(/^\/+/, '')
 
   // Wenn es schon die vollständige URL ist – durchlassen
