@@ -5,10 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
   base: '/',
   server: { host: '::', port: 8080 },
-  plugins: [
-    react(),
-    tsconfigPaths(),
-  ],
+  plugins: [react(), tsconfigPaths()],
   build: {
     target: 'esnext',
     emptyOutDir: true,
