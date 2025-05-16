@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/carousel'
 import { Switch } from '@/components/ui/switch'
 import PhotoGalleryItem from './PhotoGalleryItem'
+import { Play } from 'lucide-react'
+import FullscreenSlideshow from './FullscreenSlideshow'
 
 interface ArchivePhotosProps {
   images: string[]
@@ -18,6 +20,7 @@ interface ArchivePhotosProps {
 
 const ArchivePhotos = ({ images, imagesLoaded }: ArchivePhotosProps) => {
   const [isGridView, setIsGridView] = useState(false)
+  const [showSlideshow, setShowSlideshow] = useState(false)
   const { language } = useLanguage()
 
   return (
@@ -44,6 +47,15 @@ const ArchivePhotos = ({ images, imagesLoaded }: ArchivePhotosProps) => {
             <Grid2X2 size={18} aria-hidden="true" />
             <span className="sr-only">Rasteransicht</span>
           </div>
+
+          <button
+            onClick={() => setShowSlideshow(true)}
+            className="ml-2 rounded-full bg-seagreen p-2 text-white shadow-md transition-all duration-300 hover:scale-105 hover:bg-seagreen/80 hover:shadow-lg"
+            title="Diashow starten"
+          >
+            <Play size={20} />
+            <span className="sr-only">Diashow starten</span>
+          </button>
         </div>
       </div>
 
@@ -73,6 +85,9 @@ const ArchivePhotos = ({ images, imagesLoaded }: ArchivePhotosProps) => {
             <CarouselPrevious className="left-2 bg-black/40 backdrop-blur-sm hover:bg-black/60 focus:ring-2 focus:ring-white/50" />
             <CarouselNext className="right-2 bg-black/40 backdrop-blur-sm hover:bg-black/60 focus:ring-2 focus:ring-white/50" />
           </Carousel>
+        )}
+        {showSlideshow && (
+          <FullscreenSlideshow images={images} onClose={() => setShowSlideshow(false)} />
         )}
       </div>
     </div>

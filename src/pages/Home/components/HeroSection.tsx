@@ -116,7 +116,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
           <h2 className="hero-stagger-1 font-lusitana text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             {language === 'pt' ? 'Tradições Portuguesas' : 'Tradições Portuguesas'}
           </h2>
-<p className="hero-stagger-2 max-w-xl font-lusitana text-base italic opacity-90 md:text-xl">
+          <p className="hero-stagger-2 max-w-xl font-lusitana text-base italic opacity-90 md:text-xl">
             {language === 'pt' ? (
               <>
                 Preservando a cultura portuguesa em Hamburgo
@@ -135,7 +135,7 @@ const HeroSection = ({ language }: HeroSectionProps) => {
           <div className="hero-stagger-3 pt-4">
             <PreloadLink
               to="/activities"
-              className="group z-5 inline-flex items-center gap-2 rounded-lg bg-seagreen px-6 py-3 font-lusitana text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+              className="group inline-flex items-center gap-2 rounded-lg bg-seagreen px-6 py-3 font-lusitana text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
               preloadResources={[
                 {
                   href: asset('images/activity/ensaios/ensaioadultos.webp'),
