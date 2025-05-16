@@ -177,8 +177,8 @@ const ContactForm = () => {
               ? 'A enviar...'
               : 'Wird gesendet...'
             : language === 'pt'
-            ? 'Enviar'
-            : 'Senden'}
+              ? 'Enviar'
+              : 'Senden'}
         </Button>
 
         <p className="text-center text-xs text-gray-500">
