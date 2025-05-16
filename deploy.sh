@@ -13,38 +13,44 @@ git stash push -m "💡 deploy stash" || true
 
 echo "🔨 Build läuft..."
 pnpm run build
-echo "🧽 Manifest-Pfade anpassen für GitHub Pages..."
 
+# 👉 Check auf dist-Verzeichnis
+if [ ! -d dist ]; then
+  echo "❌ Kein dist/ Ordner gefunden! Build fehlgeschlagen?"
+  exit 1
+fi
+
+echo "🧽 Manifest-Pfade anpassen für GitHub Pages..."
+echo > dist/.nojekyll  # verhindert GitHub Pages-Jekyll-Probleme
 
 echo "🚀 Deployment beginnt..."
 
 DEPLOY_DIR=../gh-pages-temp
 
 # Clean up evtl. altes Worktree
-git worktree remove $DEPLOY_DIR -f || true
-rm -rf $DEPLOY_DIR
+git worktree remove "$DEPLOY_DIR" -f || true
+rm -rf "$DEPLOY_DIR"
 
 # Neues Worktree auf gh-pages
 git fetch origin gh-pages || echo "gh-pages noch nicht vorhanden"
-git worktree add $DEPLOY_DIR gh-pages || (
+git worktree add "$DEPLOY_DIR" gh-pages || (
   git branch gh-pages || true
-  git worktree add $DEPLOY_DIR gh-pages
+  git worktree add "$DEPLOY_DIR" gh-pages
 )
 
-# Inhalte kopieren
-rm -rf $DEPLOY_DIR/*
-cp -r dist/* $DEPLOY_DIR
+# Inhalte kopieren (inkl. versteckte Dateien)
+rm -rf "$DEPLOY_DIR"/*
+cp -r dist/. "$DEPLOY_DIR"
 
 # Commit & Push
-cd $DEPLOY_DIR
+cd "$DEPLOY_DIR"
 git add .
 
-# 🧹 Entfernte Dateien sauber mitnehmen
-DELETED=$(git ls-files --deleted)
+DELETED=$(git ls-files --deleted || true)
 if [ -n "$DELETED" ]; then
   echo "🧹 Entfernte Dateien werden gelöscht:"
   echo "$DELETED"
-  echo "$DELETED" | xargs git rm
+  echo "$DELETED" | grep -v '^$' | xargs -r git rm
 else
   echo "✅ Keine entfernten Dateien zu löschen"
 fi
@@ -53,10 +59,9 @@ git commit -m "🚀 live deploy $(date +%F_%H-%M-%S)" || echo "✅ Nichts Neues 
 git push origin gh-pages
 cd -
 
-
 echo "🧹 Aufräumen..."
-git worktree remove $DEPLOY_DIR -f || true
-rm -rf $DEPLOY_DIR
+git worktree remove "$DEPLOY_DIR" -f || true
+rm -rf "$DEPLOY_DIR"
 
 echo "↩️ Zurück zu main, Stash wiederherstellen..."
 git checkout main
