@@ -147,9 +147,10 @@ const translations: Translations = {
     de: 'Senden',
   },
   formProtection: {
-    pt: 'Este site é protegido por FormSubmit e aplicam-se a Política de Privacidade e os Termos de Serviço.',
-    de: 'Diese Website wird durch FormSubmit geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen.',
+    pt: 'Este site utiliza o serviço Formspree para proteger e enviar os dados do formulário de forma segura.',
+    de: 'Diese Website verwendet den Dienst Formspree zum sicheren Versand und Schutz der Formulardaten.',
   },
+
   usefulLinks: {
     pt: 'Links Úteis',
     de: 'Nützliche Links',

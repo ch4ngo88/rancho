@@ -73,21 +73,21 @@ const Datenschutz = () => {
               <h3 className="font-bold">Formular de Contato / Kontaktformular</h3>
               <p>
                 {language === 'pt'
-                  ? 'Se você nos contactar por formulário, os dados fornecidos serão enviados via FormSubmit (serviço externo) para nosso endereço de e-mail. Nenhum dado é armazenado neste site.'
-                  : 'Wenn Sie uns per Formular kontaktieren, werden die angegebenen Daten über den Dienst FormSubmit (externer Anbieter) an unsere E-Mail-Adresse weitergeleitet. Auf dieser Website werden keine Daten gespeichert.'}
+                  ? 'Se você nos contactar por formulário, os dados fornecidos serão transmitidos via Formspree (serviço externo) diretamente para nossa caixa de e-mail. Nenhum dado é armazenado neste site.'
+                  : 'Wenn Sie uns per Formular kontaktieren, werden die angegebenen Daten über den Dienst Formspree (externer Anbieter) direkt an unser E-Mail-Postfach übermittelt. Auf dieser Website werden keine Daten gespeichert.'}
               </p>
               <p>
                 {language === 'pt'
-                  ? 'Consulte também a política de privacidade do FormSubmit:'
-                  : 'Bitte beachten Sie auch die Datenschutzrichtlinien von FormSubmit:'}
+                  ? 'Consulte também a política de privacidade do Formspree:'
+                  : 'Bitte beachten Sie auch die Datenschutzrichtlinien von Formspree:'}
                 <br />
                 <a
-                  href="https://formsubmit.co/privacy.pdf"
+                  href="https://formspree.io/legal/privacy-policy/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-seagreen hover:text-seagreen/80"
                 >
-                  ➔ FormSubmit Privacy <ExternalLink className="h-4 w-4" />
+                  ➔ Formspree Privacy <ExternalLink className="h-4 w-4" />
                 </a>
               </p>
 

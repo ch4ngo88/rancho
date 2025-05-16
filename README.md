@@ -71,10 +71,8 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 - Analyse mit `source-map-explorer`
 - Tooling via **pnpm** – schnell, konsistent, monorepo-tauglich
 
-📨 **Formulare** nutzen [FormSubmit](https://formsubmit.co/) für sicheren, serverlosen Versand per E-Mail.  
-🌐 **Deployment** erfolgt via **GitHub Pages**.
-
----
+📨 **Formulare** nutzen [Formspree](https://formspree.io/) für sicheren, serverlosen E-Mail-Versand ohne eigene Backend-Logik.  
+🌐 **Deployment** erfolgt über **GitHub Pages** mit eigener Domain – vollständig statisch.
 
 ## 💌 Kontakt
 
