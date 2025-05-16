@@ -39,7 +39,7 @@ const PreloadLink: React.FC<PreloadLinkProps> = ({
     //const isPageRoute = (url: string) => !url.includes('.')
 
     //prefetchResource(to, {
-      //as: isPageRoute(to) ? 'fetch' : 'document',
+    //as: isPageRoute(to) ? 'fetch' : 'document',
     //})
 
     preloadResources.forEach((resource) => {
@@ -50,7 +50,7 @@ const PreloadLink: React.FC<PreloadLinkProps> = ({
     })
 
     setHasPrefetched(true)
-  }, [shouldPrefetch, to, preloadResources])
+  }, [shouldPrefetch, preloadResources])
 
   const handleMouseEnter = () => {
     if (onlyPrefetchOnHover) {
