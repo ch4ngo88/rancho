@@ -36,11 +36,11 @@ const PreloadLink: React.FC<PreloadLinkProps> = ({
   const prefetchLinkedResources = useCallback(() => {
     if (!shouldPrefetch) return
 
-    const isPageRoute = (url: string) => !url.includes('.')
+    //const isPageRoute = (url: string) => !url.includes('.')
 
-    prefetchResource(to, {
-      as: isPageRoute(to) ? 'fetch' : 'document',
-    })
+    //prefetchResource(to, {
+      //as: isPageRoute(to) ? 'fetch' : 'document',
+    //})
 
     preloadResources.forEach((resource) => {
       prefetchResource(resource.href, {
