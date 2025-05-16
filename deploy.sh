@@ -56,7 +56,7 @@ else
 fi
 
 git commit -m "🚀 live deploy $(date +%F_%H-%M-%S)" || echo "✅ Nichts Neues zu committen"
-git push origin gh-pages
+git push -f origin gh-pages
 cd -
 
 echo "🧹 Aufräumen..."
