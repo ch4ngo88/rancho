@@ -1,98 +1,106 @@
-import React, { useState, useEffect } from 'react'
-import { useLanguage } from '@/hooks/useLanguage'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import React, { useState, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { ExternalLink, Mail, Phone, MapPin, Link as LinkIcon } from 'lucide-react'
-import { useMetaSEO } from '@/hooks/useMetaSEO'
-import Map from '@/components/map' // ganz oben hinzufügen
-import { asset } from '@/lib/asset'
+} from "@/components/ui/accordion";
+import {
+  ExternalLink,
+  Mail,
+  Phone,
+  MapPin,
+  Link as LinkIcon,
+} from "lucide-react";
+import { useMetaSEO } from "@/hooks/useMetaSEO";
+import Map from "@/components/map"; // ganz oben hinzufügen
+import { asset } from "@/lib/asset";
 
 type UsefulLink = {
-  url: string
-  icon: string
-  title: string
-}
+  url: string;
+  icon: string;
+  title: string;
+};
 
 const usefulLinks: UsefulLink[] = [
   {
-    url: 'https://www.rfptv.pt/',
-    icon: 'images/links/MYvhCGImba3MPCwmRu2pZgGkFhy2L6tkTLsSO3LN.webp',
-    title: 'Canal tv Digital do Folclore de Portugal',
+    url: "https://www.rfptv.pt/",
+    icon: "images/links/MYvhCGImba3MPCwmRu2pZgGkFhy2L6tkTLsSO3LN.webp",
+    title: "Canal tv Digital do Folclore de Portugal",
   },
   {
-    url: 'https://folclore.pt/',
-    icon: 'images/links/cropped-portal-logo.webp',
-    title: 'Folclore de Portugal – O Portal do Folclore Português',
+    url: "https://folclore.pt/",
+    icon: "images/links/cropped-portal-logo.webp",
+    title: "Folclore de Portugal – O Portal do Folclore Português",
   },
   {
-    url: 'https://www.ffp.pt/',
-    icon: 'images/links/logotipo.webp',
-    title: 'Federação do Folclore Português',
+    url: "https://www.ffp.pt/",
+    icon: "images/links/logotipo.webp",
+    title: "Federação do Folclore Português",
   },
   {
-    url: 'https://www.casabrincheiro.pt/',
-    icon: 'images/links/Screenshot+2023-12-22+at+09.47.32-240w.webp',
-    title: 'Casa Brincheiro',
+    url: "https://www.casabrincheiro.pt/",
+    icon: "images/links/Screenshot+2023-12-22+at+09.47.32-240w.webp",
+    title: "Casa Brincheiro",
   },
   {
-    url: 'https://portaldascomunidades.mne.gov.pt/pt/',
-    icon: 'images/links/pdc_66x66.webp',
-    title: 'Portal das Comunidades Portuguesas',
+    url: "https://portaldascomunidades.mne.gov.pt/pt/",
+    icon: "images/links/pdc_66x66.webp",
+    title: "Portal das Comunidades Portuguesas",
   },
   {
-    url: 'https://missao-portuguesa-hamburg.de/cms3/p/Mission/index.php',
-    icon: 'images/links/logotipo_missao.webp',
-    title: 'Missão Católica de Língua Portuguesa de Hamburgo',
+    url: "https://missao-portuguesa-hamburg.de/cms3/p/Mission/index.php",
+    icon: "images/links/logotipo_missao.webp",
+    title: "Missão Católica de Língua Portuguesa de Hamburgo",
   },
   {
-    url: 'https://www.instagram.com/musicoportuga',
-    icon: 'images/links/297537604_569168504998554_343296032616875640_n.webp',
-    title: 'Tiago Pinheiro - músico portuga de Hamburgo',
+    url: "https://www.instagram.com/musicoportuga",
+    icon: "images/links/297537604_569168504998554_343296032616875640_n.webp",
+    title: "Tiago Pinheiro - músico portuga de Hamburgo",
   },
   {
-    url: 'https://www.kulturpalast-harburg.com/',
-    icon: 'images/links/logokp.webp',
-    title: 'Kultur Palast Harburg',
+    url: "https://www.kulturpalast-harburg.com/",
+    icon: "images/links/logokp.webp",
+    title: "Kultur Palast Harburg",
   },
-]
+];
 
 const ContactForm = () => {
-  const { language } = useLanguage()
+  const { language } = useLanguage();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   const handleChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target
-      setFormData((prev) => ({ ...prev, [name]: value }))
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
     },
-    [],
-  )
+    []
+  );
 
-  const [redirectUrl, setRedirectUrl] = useState('')
+  const [redirectUrl, setRedirectUrl] = useState("");
 
   useEffect(() => {
-    setRedirectUrl(`${window.location.origin}/contact`)
-  }, [])
+    setRedirectUrl(`${window.location.origin}/contact`);
+  }, []);
 
   return (
     <div className="glass-card p-6">
       <h2 className="mb-6 text-xl font-semibold text-seagreen">
-        {language === 'pt' ? 'Envie-nos uma mensagem' : 'Schreiben Sie uns eine Nachricht'}
+        {language === "pt"
+          ? "Envie-nos uma mensagem"
+          : "Schreiben Sie uns eine Nachricht"}
       </h2>
       <form
-        action="https://formsubmit.co/el/kasalu"
+        action="https://formsubmit.co/marco.dacio@icloud.com"
         method="POST"
         className="space-y-5"
         autoComplete="on"
@@ -103,20 +111,24 @@ const ContactForm = () => {
         <input
           type="text"
           name="_honey"
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
           tabIndex={-1}
           autoComplete="off"
         />
         <input type="hidden" name="_next" value={redirectUrl} />
 
         {/* ✅ E-Mail Setup */}
-        <input type="hidden" name="_subject" value="Neue Nachricht über Kontaktformular" />
+        <input
+          type="hidden"
+          name="_subject"
+          value="Neue Nachricht über Kontaktformular"
+        />
         <input type="hidden" name="_template" value="table" />
 
         {/* 📩 Name */}
         <div>
           <label htmlFor="name" className="form-label">
-            {language === 'pt' ? 'Nome' : 'Name'}
+            {language === "pt" ? "Nome" : "Name"}
           </label>
           <Input
             id="name"
@@ -126,14 +138,14 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="form-input"
-            placeholder={language === 'pt' ? 'Seu nome' : 'Ihr Name'}
+            placeholder={language === "pt" ? "Seu nome" : "Ihr Name"}
           />
         </div>
 
         {/* 📩 E-Mail */}
         <div>
           <label htmlFor="email" className="form-label">
-            {language === 'pt' ? 'Email' : 'E-Mail'}
+            {language === "pt" ? "Email" : "E-Mail"}
           </label>
           <Input
             id="email"
@@ -144,14 +156,14 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="form-input"
-            placeholder={language === 'pt' ? 'Seu email' : 'Ihre E-Mail'}
+            placeholder={language === "pt" ? "Seu email" : "Ihre E-Mail"}
           />
         </div>
 
         {/* 📩 Betreff */}
         <div>
           <label htmlFor="subject" className="form-label">
-            {language === 'pt' ? 'Assunto' : 'Betreff'}
+            {language === "pt" ? "Assunto" : "Betreff"}
           </label>
           <Input
             id="subject"
@@ -161,14 +173,18 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             className="form-input"
-            placeholder={language === 'pt' ? 'Assunto da mensagem' : 'Betreff der Nachricht'}
+            placeholder={
+              language === "pt"
+                ? "Assunto da mensagem"
+                : "Betreff der Nachricht"
+            }
           />
         </div>
 
         {/* 📩 Nachricht */}
         <div>
           <label htmlFor="message" className="form-label">
-            {language === 'pt' ? 'Mensagem' : 'Nachricht'}
+            {language === "pt" ? "Mensagem" : "Nachricht"}
           </label>
           <Textarea
             id="message"
@@ -179,7 +195,7 @@ const ContactForm = () => {
             rows={4}
             required
             className="form-input"
-            placeholder={language === 'pt' ? 'Sua mensagem' : 'Ihre Nachricht'}
+            placeholder={language === "pt" ? "Sua mensagem" : "Ihre Nachricht"}
           />
         </div>
 
@@ -188,27 +204,27 @@ const ContactForm = () => {
           type="submit"
           className="w-full bg-seagreen transition-all duration-300 hover:scale-[1.02] hover:bg-seagreen/90 hover:shadow-lg"
         >
-          {language === 'pt' ? 'Enviar' : 'Senden'}
+          {language === "pt" ? "Enviar" : "Senden"}
         </Button>
 
         <p className="text-center text-xs text-gray-500">
-          {language === 'pt'
-            ? 'Este site é protegido por FormSubmit e aplicam-se a Política de Privacidade e os Termos de Serviço.'
-            : 'Diese Website wird durch FormSubmit geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen.'}
+          {language === "pt"
+            ? "Este site é protegido por FormSubmit e aplicam-se a Política de Privacidade e os Termos de Serviço."
+            : "Diese Website wird durch FormSubmit geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen."}
         </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
 const ContactPage = React.memo(() => {
-  useMetaSEO('contact')
-  const { language } = useLanguage()
+  useMetaSEO("contact");
+  const { language } = useLanguage();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="section-title mb-10 text-center">
-        {language === 'pt' ? 'Contacto' : 'Kontakt'}
+        {language === "pt" ? "Contacto" : "Kontakt"}
       </h1>
 
       <div className="mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2">
@@ -216,7 +232,9 @@ const ContactPage = React.memo(() => {
           <div className="glass-card flex-grow p-6 transition-all duration-300 hover:shadow-lg">
             <div className="mb-6 flex items-center gap-2">
               <Mail className="h-6 w-6 text-seagreen" />
-              <h3 className="text-xl font-bold text-seagreen">Tradicoes Portuguesas</h3>
+              <h3 className="text-xl font-bold text-seagreen">
+                Tradicoes Portuguesas
+              </h3>
             </div>
 
             <div className="flex flex-col items-start justify-between gap-6 text-gray-700 md:flex-row">
@@ -242,7 +260,7 @@ const ContactPage = React.memo(() => {
 
               <div className="flex-shrink-0">
                 <img
-                  src={asset('images/contact/QR Code.webp')}
+                  src={asset("images/contact/QR Code.webp")}
                   alt="QR Code"
                   className="h-32 rounded-lg shadow-md transition-shadow hover:shadow-lg"
                 />
@@ -266,7 +284,9 @@ const ContactPage = React.memo(() => {
             <AccordionTrigger className="accordion-trigger">
               <div className="flex items-center gap-2">
                 <LinkIcon className="text-seagreen" />
-                <span>{language === 'pt' ? 'Links Úteis' : 'Nützliche Links'}</span>
+                <span>
+                  {language === "pt" ? "Links Úteis" : "Nützliche Links"}
+                </span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4">
@@ -279,7 +299,11 @@ const ContactPage = React.memo(() => {
                     rel="noopener noreferrer"
                     className="group flex items-center rounded-md border border-transparent p-3 transition-all duration-300 hover:border-seagreen/30 hover:bg-slate-100 hover:shadow-md"
                   >
-                    <img src={link.icon} alt={link.title} className="mr-3 h-6 w-6 object-contain" />
+                    <img
+                      src={link.icon}
+                      alt={link.title}
+                      className="mr-3 h-6 w-6 object-contain"
+                    />
                     <span className="flex-1 text-sm">{link.title}</span>
                     <ExternalLink className="h-4 w-4 text-gray-400 transition-colors group-hover:text-seagreen" />
                   </a>
@@ -290,8 +314,8 @@ const ContactPage = React.memo(() => {
         </Accordion>
       </div>
     </div>
-  )
-})
-ContactPage.displayName = 'ContactPage'
+  );
+});
+ContactPage.displayName = "ContactPage";
 
-export default ContactPage
+export default ContactPage;
