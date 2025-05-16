@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Grid2X2, Images } from 'lucide-react'
 import { useLanguage } from '@/hooks/useLanguage'
 import {
@@ -22,6 +22,13 @@ const ArchivePhotos = ({ images, imagesLoaded }: ArchivePhotosProps) => {
   const [isGridView, setIsGridView] = useState(false)
   const [showSlideshow, setShowSlideshow] = useState(false)
   const { language } = useLanguage()
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('slideshow') === 'true') {
+      setShowSlideshow(true)
+    }
+  }, [])
 
   return (
     <div className="mx-auto mb-12 w-full max-w-5xl animate-fade-in">

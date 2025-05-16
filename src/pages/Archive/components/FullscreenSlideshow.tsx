@@ -7,15 +7,13 @@ interface FullscreenSlideshowProps {
 }
 
 const shuffleArray = (array: string[]): string[] => {
-  const copy: string[] = Array.from(array) // garantiert korrekt typisiert
-
+  const copy: string[] = [...array]
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    const temp: string = copy[i]!
+    const temp = copy[i]!
     copy[i] = copy[j]!
     copy[j] = temp
   }
-
   return copy
 }
 
@@ -25,74 +23,91 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Shuffle einmalig beim Mount
     const shuffled = shuffleArray(images)
     setShuffledImages(shuffled)
     setIndex(0)
+  }, [images])
 
-    // Fullscreen starten – inkl. Fallbacks
-    const container = containerRef.current
-    if (container) {
-      const requestFS =
-        container.requestFullscreen ??
-        (
-          container as HTMLElement & {
-            webkitRequestFullscreen?: () => Promise<void>
-            msRequestFullscreen?: () => Promise<void>
-          }
-        ).webkitRequestFullscreen ??
-        (
-          container as HTMLElement & {
-            msRequestFullscreen?: () => Promise<void>
-          }
-        ).msRequestFullscreen
-
-      requestFS?.call(container)
-    }
-
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % shuffled.length)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((prev) => (prev + 1) % shuffledImages.length)
     }, 5000)
+    return () => clearInterval(id)
+  }, [shuffledImages])
 
-    window.addEventListener('keydown', handleKey)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        const exitFullscreen =
+          document.exitFullscreen ||
+          (
+            document as Document & {
+              webkitExitFullscreen?: () => Promise<void>
+              msExitFullscreen?: () => Promise<void>
+            }
+          ).webkitExitFullscreen ||
+          (
+            document as Document & {
+              msExitFullscreen?: () => Promise<void>
+            }
+          ).msExitFullscreen
 
-    return () => {
-      clearInterval(interval)
-      window.removeEventListener('keydown', handleKey)
-
-      const exitFS =
-        document.exitFullscreen ??
-        (
-          document as Document & {
-            webkitExitFullscreen?: () => Promise<void>
-            msExitFullscreen?: () => Promise<void>
-          }
-        ).webkitExitFullscreen ??
-        (
-          document as Document & {
-            msExitFullscreen?: () => Promise<void>
-          }
-        ).msExitFullscreen
-
-      if (
-        document.fullscreenElement ||
-        (document as Document & { webkitFullscreenElement?: Element }).webkitFullscreenElement
-      ) {
-        exitFS?.call(document)
+        exitFullscreen?.call(document)
+        onClose()
       }
     }
-  }, [images, onClose])
+
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  const handleClick = () => {
+    const el = containerRef.current
+    if (!el) return
+
+    const requestFullscreen =
+      el.requestFullscreen ||
+      (
+        el as HTMLElement & {
+          webkitRequestFullscreen?: () => Promise<void>
+          msRequestFullscreen?: () => Promise<void>
+        }
+      ).webkitRequestFullscreen ||
+      (
+        el as HTMLElement & {
+          msRequestFullscreen?: () => Promise<void>
+        }
+      ).msRequestFullscreen
+
+    requestFullscreen?.call(el)
+  }
+
+  const handleClose = () => {
+    const exitFullscreen =
+      document.exitFullscreen ||
+      (
+        document as Document & {
+          webkitExitFullscreen?: () => Promise<void>
+          msExitFullscreen?: () => Promise<void>
+        }
+      ).webkitExitFullscreen ||
+      (
+        document as Document & {
+          msExitFullscreen?: () => Promise<void>
+        }
+      ).msExitFullscreen
+
+    exitFullscreen?.call(document)
+    onClose()
+  }
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-      onClick={onClose}
-      onTouchStart={onClose}
+      className="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black"
+      onClick={handleClose}
+      onTouchStart={handleClose}
+      onLoadCapture={handleClick} // nur beim Mount direkt fullscreen – optional!
     >
       <img
         src={asset(shuffledImages[index] ?? '')}
