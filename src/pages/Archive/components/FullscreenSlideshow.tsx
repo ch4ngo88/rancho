@@ -1,6 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import { asset } from '@/lib/asset'
 
+type FullscreenDocument = Document & {
+  webkitExitFullscreen?: () => Promise<void>
+  msExitFullscreen?: () => Promise<void>
+  webkitFullscreenElement?: Element | null
+  msFullscreenElement?: Element | null
+}
+
+type FullscreenElement = HTMLElement & {
+  webkitRequestFullscreen?: () => Promise<void>
+  msRequestFullscreen?: () => Promise<void>
+}
+
 interface FullscreenSlideshowProps {
   images: string[]
   onClose: () => void
@@ -21,6 +33,52 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   const [shuffledImages, setShuffledImages] = useState<string[]>([])
   const [index, setIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const doc = document as FullscreenDocument
+
+      const isNowFullscreen =
+        !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
+
+      if (!isNowFullscreen) {
+        setTimeout(() => {
+          const stillFullscreen =
+            !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
+
+          if (stillFullscreen) {
+            const exitFullscreen =
+              doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
+
+            exitFullscreen?.call(doc)
+          }
+        }, 300)
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange)
+    document.addEventListener('msfullscreenchange', handleFullscreenChange)
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange)
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange)
+      document.removeEventListener('msfullscreenchange', handleFullscreenChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isMobile) {
+      const el = containerRef.current as FullscreenElement | null
+      if (!el) return
+
+      const requestFullscreen =
+        el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen
+
+      requestFullscreen?.call(el)
+    }
+  }, [isMobile])
 
   useEffect(() => {
     const shuffled = shuffleArray(images)
@@ -38,21 +96,12 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        const exitFullscreen =
-          document.exitFullscreen ||
-          (
-            document as Document & {
-              webkitExitFullscreen?: () => Promise<void>
-              msExitFullscreen?: () => Promise<void>
-            }
-          ).webkitExitFullscreen ||
-          (
-            document as Document & {
-              msExitFullscreen?: () => Promise<void>
-            }
-          ).msExitFullscreen
+        const doc = document as FullscreenDocument
 
-        exitFullscreen?.call(document)
+        const exitFullscreen =
+          doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
+
+        exitFullscreen?.call(doc)
         onClose()
       }
     }
@@ -62,42 +111,42 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   }, [onClose])
 
   const handleClick = () => {
-    const el = containerRef.current
+    const el = containerRef.current as FullscreenElement | null
     if (!el) return
 
-    const requestFullscreen =
-      el.requestFullscreen ||
-      (
-        el as HTMLElement & {
-          webkitRequestFullscreen?: () => Promise<void>
-          msRequestFullscreen?: () => Promise<void>
-        }
-      ).webkitRequestFullscreen ||
-      (
-        el as HTMLElement & {
-          msRequestFullscreen?: () => Promise<void>
-        }
-      ).msRequestFullscreen
+    const doc = document as FullscreenDocument
 
-    requestFullscreen?.call(el)
+    const fullscreenElement =
+      doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement
+
+    if (!fullscreenElement) {
+      const requestFullscreen =
+        el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen
+
+      requestFullscreen?.call(el)
+      return
+    }
+
+    handleClose()
   }
 
   const handleClose = () => {
-    const exitFullscreen =
-      document.exitFullscreen ||
-      (
-        document as Document & {
-          webkitExitFullscreen?: () => Promise<void>
-          msExitFullscreen?: () => Promise<void>
-        }
-      ).webkitExitFullscreen ||
-      (
-        document as Document & {
-          msExitFullscreen?: () => Promise<void>
-        }
-      ).msExitFullscreen
+    const doc = document as FullscreenDocument
 
-    exitFullscreen?.call(document)
+    const exitFullscreen = doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
+
+    exitFullscreen?.call(doc)
+
+    // Sicherheitspuffer – falls fullscreen nicht zuverlässig verlassen wurde
+    setTimeout(() => {
+      const stillFullscreen =
+        !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
+
+      if (stillFullscreen) {
+        exitFullscreen?.call(doc)
+      }
+    }, 200)
+
     onClose()
   }
 
@@ -105,9 +154,8 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
     <div
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black"
-      onClick={handleClose}
-      onTouchStart={handleClose}
-      onLoadCapture={handleClick} // nur beim Mount direkt fullscreen – optional!
+      onClick={isMobile ? handleClick : handleClose}
+      onTouchStart={isMobile ? handleClick : undefined}
     >
       <img
         src={asset(shuffledImages[index] ?? '')}
