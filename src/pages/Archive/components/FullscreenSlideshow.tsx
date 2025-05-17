@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { asset } from '@/lib/asset'
+import { Play } from 'lucide-react'
 
 type FullscreenDocument = Document & {
   webkitExitFullscreen?: () => Promise<void>
@@ -81,9 +82,6 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
         el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen
       requestFullscreen?.call(el)
       setMode('playing')
-    } else {
-      setMode('fullscreen')
-      setTimeout(() => window.scrollTo(0, 1), 50)
     }
   }, [isMobile])
 
@@ -129,17 +127,16 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
     }
   }, [mode])
 
-  const handleMobileClick = () => {
-    if (mode === 'fullscreen') {
-      setMode('playing')
-    } else if (mode === 'playing') {
-      handleClose()
-    }
-  }
-
   const handleClick = () => {
     if (isMobile) {
-      handleMobileClick()
+      if (mode === 'idle') {
+        setMode('fullscreen')
+        setTimeout(() => window.scrollTo(0, 1), 50)
+      } else if (mode === 'fullscreen') {
+        setMode('playing')
+      } else if (mode === 'playing') {
+        handleClose()
+      }
     } else {
       handleClose()
     }
@@ -166,8 +163,16 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black"
       onClick={handleClick}
-      onTouchStart={isMobile ? handleMobileClick : undefined}
+      onTouchStart={isMobile ? handleClick : undefined}
     >
+      {isMobile && mode === 'fullscreen' && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="rounded-full bg-white/20 p-4 backdrop-blur">
+            <Play className="h-8 w-8 text-white" />
+          </div>
+        </div>
+      )}
+
       <img
         src={asset(shuffledImages[index] ?? '')}
         alt=""
