@@ -19,7 +19,7 @@ interface FullscreenSlideshowProps {
 }
 
 const shuffleArray = (array: string[]): string[] => {
-  const copy: string[] = [...array]
+  const copy = [...array]
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     const temp = copy[i]!
@@ -29,16 +29,23 @@ const shuffleArray = (array: string[]): string[] => {
   return copy
 }
 
+const isMobileDevice = (): boolean => {
+  if (typeof navigator === 'undefined') return false
+  const ua = navigator.userAgent.toLowerCase()
+  return /android|iphone|ipad|ipod|windows phone|mobile/i.test(ua)
+}
+
 const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   const [shuffledImages, setShuffledImages] = useState<string[]>([])
   const [index, setIndex] = useState(0)
+  const [mode, setMode] = useState<'idle' | 'fullscreen' | 'playing'>('idle')
   const containerRef = useRef<HTMLDivElement>(null)
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
+  const isMobile = isMobileDevice()
 
   useEffect(() => {
     const handleFullscreenChange = () => {
       const doc = document as FullscreenDocument
-
       const isNowFullscreen =
         !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
 
@@ -46,11 +53,9 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
         setTimeout(() => {
           const stillFullscreen =
             !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
-
           if (stillFullscreen) {
             const exitFullscreen =
               doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
-
             exitFullscreen?.call(doc)
           }
         }, 300)
@@ -72,11 +77,13 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
     if (!isMobile) {
       const el = containerRef.current as FullscreenElement | null
       if (!el) return
-
       const requestFullscreen =
         el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen
-
       requestFullscreen?.call(el)
+      setMode('playing')
+    } else {
+      setMode('fullscreen')
+      setTimeout(() => window.scrollTo(0, 1), 50)
     }
   }, [isMobile])
 
@@ -87,20 +94,22 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
   }, [images])
 
   useEffect(() => {
+    if (mode !== 'playing' || shuffledImages.length === 0) return
+
     const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % shuffledImages.length)
     }, 5000)
     return () => clearInterval(id)
-  }, [shuffledImages])
+  }, [mode, shuffledImages])
 
   useEffect(() => {
+    if (isMobile) return
+
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         const doc = document as FullscreenDocument
-
         const exitFullscreen =
           doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
-
         exitFullscreen?.call(doc)
         onClose()
       }
@@ -108,40 +117,42 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
 
     window.addEventListener('keydown', handleKey)
     return () => window.removeEventListener('keydown', handleKey)
-  }, [onClose])
+  }, [onClose, isMobile])
+
+  useEffect(() => {
+    if (mode !== 'idle') {
+      const originalOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = originalOverflow
+      }
+    }
+  }, [mode])
+
+  const handleMobileClick = () => {
+    if (mode === 'fullscreen') {
+      setMode('playing')
+    } else if (mode === 'playing') {
+      handleClose()
+    }
+  }
 
   const handleClick = () => {
-    const el = containerRef.current as FullscreenElement | null
-    if (!el) return
-
-    const doc = document as FullscreenDocument
-
-    const fullscreenElement =
-      doc.fullscreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement
-
-    if (!fullscreenElement) {
-      const requestFullscreen =
-        el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen
-
-      requestFullscreen?.call(el)
-      return
+    if (isMobile) {
+      handleMobileClick()
+    } else {
+      handleClose()
     }
-
-    handleClose()
   }
 
   const handleClose = () => {
     const doc = document as FullscreenDocument
-
     const exitFullscreen = doc.exitFullscreen || doc.webkitExitFullscreen || doc.msExitFullscreen
-
     exitFullscreen?.call(doc)
 
-    // Sicherheitspuffer – falls fullscreen nicht zuverlässig verlassen wurde
     setTimeout(() => {
       const stillFullscreen =
         !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
-
       if (stillFullscreen) {
         exitFullscreen?.call(doc)
       }
@@ -154,8 +165,8 @@ const FullscreenSlideshow = ({ images, onClose }: FullscreenSlideshowProps) => {
     <div
       ref={containerRef}
       className="fixed inset-0 z-[9999] flex h-screen w-screen items-center justify-center bg-black"
-      onClick={isMobile ? handleClick : handleClose}
-      onTouchStart={isMobile ? handleClick : undefined}
+      onClick={handleClick}
+      onTouchStart={isMobile ? handleMobileClick : undefined}
     >
       <img
         src={asset(shuffledImages[index] ?? '')}

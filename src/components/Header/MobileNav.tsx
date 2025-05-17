@@ -4,6 +4,7 @@ import { Home, LayoutGrid, Archive, Users, Mail, X } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
 import { LanguageSwitcher } from '../LanguageSwitcher'
+import { FaYoutube, FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa'
 
 const MobileNav = () => {
   const { t, language } = useLanguage()
@@ -89,6 +90,38 @@ const MobileNav = () => {
               ))}
               <li className="mt-auto flex justify-center border-t border-white/20 px-6 py-6">
                 <LanguageSwitcher />
+              </li>
+              <li className="border-t border-white/20 px-6 pb-10 pt-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    {
+                      href: 'https://www.youtube.com/@tradicoesportuguesasdeharb1754',
+                      icon: <FaYoutube className="text-2xl text-[#FF0000]" />,
+                    },
+                    {
+                      href: 'https://www.facebook.com/portugiesischerverein.harburg?locale=de_DE',
+                      icon: <FaFacebook className="text-2xl text-[#1877F2]" />,
+                    },
+                    {
+                      href: 'https://www.instagram.com/tradicoes_portuguesas/',
+                      icon: <FaInstagram className="text-2xl text-[#E1306C]" />,
+                    },
+                    {
+                      href: 'https://www.tiktok.com/@tradies.portugues',
+                      icon: <FaTiktok className="text-2xl text-black" />,
+                    },
+                  ].map((item, i) => (
+                    <a
+                      key={i}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center rounded-xl bg-white p-2 shadow-md transition-transform hover:scale-105"
+                    >
+                      {item.icon}
+                    </a>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>
