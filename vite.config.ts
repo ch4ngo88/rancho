@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   build: {
     target: 'esnext',
+    outDir: 'dist',
     emptyOutDir: true,
     minify: 'terser',
     terserOptions: {
