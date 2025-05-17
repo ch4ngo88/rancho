@@ -1,17 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "🧠 Checking current branch..."
+echo "✅ Checking current branch..."
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ "$BRANCH" != "main" ]; then
   echo "❌ Du bist nicht auf 'main' – aktuell auf '$BRANCH'. Abbruch."
   exit 1
 fi
 
-echo "💾 Lokale Änderungen stashen..."
+echo "✅ Lokale Änderungen stashen..."
 git stash push -m "💡 deploy stash" || true
 
-echo "🔨 Build läuft..."
+echo "✅ Build läuft..."
 pnpm run build
 
 # 👉 Check auf dist-Verzeichnis
@@ -20,10 +20,10 @@ if [ ! -d dist ]; then
   exit 1
 fi
 
-echo "🧽 Manifest-Pfade anpassen für GitHub Pages..."
+echo "✅ Manifest-Pfade anpassen für GitHub Pages..."
 echo > dist/.nojekyll  # verhindert GitHub Pages-Jekyll-Probleme
 
-echo "🚀 Deployment beginnt..."
+echo "✅ Deployment beginnt..."
 
 DEPLOY_DIR=../gh-pages-temp
 
@@ -32,7 +32,7 @@ git worktree remove "$DEPLOY_DIR" -f || true
 rm -rf "$DEPLOY_DIR"
 
 # Neues Worktree auf gh-pages
-git fetch origin gh-pages || echo "gh-pages noch nicht vorhanden"
+git fetch origin gh-pages || echo "ℹ️ gh-pages noch nicht vorhanden"
 git worktree add "$DEPLOY_DIR" gh-pages || (
   git branch gh-pages || true
   git worktree add "$DEPLOY_DIR" gh-pages
@@ -59,12 +59,12 @@ git commit -m "🚀 live deploy $(date +%F_%H-%M-%S)" || echo "✅ Nichts Neues 
 git push -f origin gh-pages
 cd -
 
-echo "🧹 Aufräumen..."
+echo "✅ Aufräumen..."
 git worktree remove "$DEPLOY_DIR" -f || true
 rm -rf "$DEPLOY_DIR"
 
-echo "↩️ Zurück zu main, Stash wiederherstellen..."
+echo "✅ Zurück zu main, Stash wiederherstellen..."
 git checkout main
-git stash pop || echo "✔️ Kein Stash nötig"
+git stash pop || echo "✅ Kein Stash nötig"
 
 echo "✅ Deployment abgeschlossen!"

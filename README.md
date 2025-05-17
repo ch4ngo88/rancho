@@ -25,14 +25,14 @@ Diese Website bietet Informationen über:
 - Möglichkeiten zur **Kontaktaufnahme**
 - einen Einblick in unsere **Geschichte & Kultur**
 
-Die Seite wurde modern und barrierearm entwickelt, optimiert für Mobilgeräte und Desktop.
+Die Seite wurde modern und barrierearm entwickelt – optimiert für Mobilgeräte und Desktop.
 
 ---
 
 ## 👨‍💻 Entwicklung & Technik
 
 Diese Website wurde ehrenamtlich entwickelt von **Marco da Silva Dácio**.  
-Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrierefreiheit und Designfreiheit.
+Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrierefreiheit und maximaler gestalterischer Freiheit.
 
 ### 🔨 Core-Technologien
 
@@ -43,7 +43,7 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 - [react-router-dom](https://reactrouter.com/) für SPA-Routing
 - Deployment via **GitHub Pages**
 
-### 📦 State & Logic
+### 📦 State & Logik
 
 - [react-hook-form](https://react-hook-form.com/) für Formulare
 - [@tanstack/react-query](https://tanstack.com/query/latest) für Data-Fetching
@@ -74,12 +74,13 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 📨 **Formulare** nutzen [Formspree](https://formspree.io/) für sicheren, serverlosen E-Mail-Versand ohne eigene Backend-Logik.  
 🌐 **Deployment** erfolgt über **GitHub Pages** mit eigener Domain – vollständig statisch.
 
+---
+
 ## 💌 Kontakt
 
-Fragen, Anfragen oder Lust mitzumachen?
-
+🎭 Wir freuen uns über neue Mitglieder, Auftrittsanfragen oder Kooperationen!  
 📧 [g.c.r.f.p@hotmail.com](mailto:g.c.r.f.p@hotmail.com)  
-📍 Tradições Portuguesas Hamburg
+📍 **Tradições Portuguesas Hamburg**
 
 ---
 

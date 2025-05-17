@@ -10,7 +10,6 @@
     "esModuleInterop": true,
     "strict": true,
     "noEmit": true,
-    "composite": false,
 
     "noImplicitAny": true,
     "strictNullChecks": true,

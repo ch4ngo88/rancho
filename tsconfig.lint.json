@@ -6,8 +6,10 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
+    "allowJs": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

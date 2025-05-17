@@ -1,4 +1,3 @@
-// eslint.config.js
 import js from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import react from 'eslint-plugin-react'
@@ -7,6 +6,9 @@ import jsxA11y from 'eslint-plugin-jsx-a11y'
 import prettier from 'eslint-config-prettier'
 
 export default [
+  {
+    ignores: ['dist/', 'node_modules/', '.turbo/', '.vite/', 'build/'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -30,7 +32,6 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
       'jsx-a11y/alt-text': 'warn',
     },
-    ignores: ['dist/', 'node_modules/', '.turbo/', '.vite/', 'build/'],
   },
   prettier,
 ]
