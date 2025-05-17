@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=/#/404" />
-    <title>Seite nicht gefunden</title>
+    <title>404 – Seite nicht gefunden</title>
+    <meta
+      name="description"
+      content="Die aufgerufene Seite existiert nicht. Du wirst weitergeleitet."
+    />
     <style>
       body {
         font-family: sans-serif;
@@ -20,10 +24,28 @@
       a:hover {
         text-decoration: underline;
       }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
     </style>
+    <script>
+      setTimeout(() => {
+        location.replace('/#/404')
+      }, 1000)
+    </script>
   </head>
   <body>
-    <h1>Diese Seite existiert nicht</h1>
+    <h1>
+      <span class="sr-only">Fehler 404:</span>
+      Diese Seite existiert nicht
+    </h1>
     <p>Du wirst gleich weitergeleitet...</p>
     <p>Falls nicht, <a href="/#/404">klicke hier</a>.</p>
   </body>

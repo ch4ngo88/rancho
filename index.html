@@ -26,11 +26,20 @@
       name="keywords"
       content="Rancho Folclórico, Tradições Portuguesas, Portugal, Folklore, Hamburg, Tanz, Dance, Música, Portuguese Culture"
     />
+    <meta
+      name="description"
+      content="Tradições Portuguesas ist ein portugiesischer Folklore-Verein aus Hamburg. Tanz, Tradition und Kultur aus Portugal – authentisch seit 1979."
+    />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tradicoesportuguesas.com/" />
     <meta name="geo.region" content="DE" />
     <meta name="geo.placename" content="Hamburg" />
     <meta name="language" content="de" />
+
+    <!-- Alternate language versions -->
+    <link rel="alternate" hreflang="de" href="https://tradicoesportuguesas.com/" />
+    <link rel="alternate" hreflang="pt" href="https://tradicoesportuguesas.com/pt/" />
+    <link rel="alternate" hreflang="x-default" href="https://tradicoesportuguesas.com/" />
 
     <!-- Dublin Core -->
     <meta name="DC.title" content="Tradições Portuguesas - Rancho Folclórico Hamburg" />
@@ -48,22 +57,21 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png" />
-
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 
-    <!-- Apple Touch Icon -->
+    <!-- Apple / Android / Pinned -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-
-    <!-- Android Chrome -->
     <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png" />
-
-    <!-- Safari Pinned Tab -->
     <link rel="mask-icon" href="/images/logo.png" color="#1a6741" />
     <link rel="apple-touch-startup-image" href="/images/logo.png" />
 
-    <!-- Manifest -->
-    <link rel="manifest" href="/manifest.json" />
+    <!-- Manifest & Crawler Info -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="security" href="/.well-known/security.txt" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="generator" content="Vite" />
 
     <!-- PWA & Theme -->
     <meta name="theme-color" content="#1a6741" />
@@ -71,13 +79,14 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Tradições" />
-
     <meta name="format-detection" content="telephone=yes" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="320" />
 
-    <!-- Security Headers -->
-    <!-- Security Headers: Maximale Wirkung über <meta> bei GitHub Pages -->
+    <!-- Content Security & Privacy -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="permissions-policy" content="camera=(), microphone=(), geolocation=()" />
     <meta
       http-equiv="Content-Security-Policy"
       content="
@@ -91,18 +100,14 @@
   "
     />
 
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta name="referrer" content="no-referrer" />
-    <meta name="permissions-policy" content="camera=(), microphone=(), geolocation=()" />
-
     <!-- Open Graph -->
     <meta property="og:title" content="Tradições Portuguesas - Rancho Folclórico Hamburg" />
     <meta
       property="og:description"
       content="Bewahrung der portugiesischen Kultur in Hamburg seit 1979"
     />
-    <meta property="og:image" content="https://tradicoesportuguesas.com/images/home/gruppe.webp" />
-    <meta property="og:url" content="https://tradicoesportuguesas.com/" />
+    <meta property="og:image" content="/images/opengraph.jpg" />
+    <meta property="og:url" content="https://tradicoesportuguesas.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tradições Portuguesas" />
     <meta property="og:locale" content="de_DE" />
@@ -114,14 +119,7 @@
       name="twitter:description"
       content="Bewahrung der portugiesischen Kultur in Hamburg seit 1979"
     />
-    <meta name="twitter:image" content="https://tradicoesportuguesas.com/images/home/gruppe.webp" />
-
-    <!-- Fonts -->
-    <meta name="generator" content="Vite" />
-
-    <!-- In Love for Crawler -->
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="twitter:image" content="/images/opengraph.jpg" />
 
     <!-- Structured Data -->
 

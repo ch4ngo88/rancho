@@ -12,5 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
 Sitemap: https://tradicoesportuguesas.com/sitemap.xml
 
