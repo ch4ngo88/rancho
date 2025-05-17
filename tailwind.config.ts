@@ -1,5 +1,17 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 import animatePlugin from 'tailwindcss-animate'
+
+const safeAreaPlugin = plugin(({ addUtilities }) => {
+  addUtilities({
+    '.safe-padded': {
+      paddingTop: 'env(safe-area-inset-top)',
+      paddingRight: 'env(safe-area-inset-right)',
+      paddingBottom: 'env(safe-area-inset-bottom)',
+      paddingLeft: 'env(safe-area-inset-left)',
+    },
+  })
+})
 
 const config: Config = {
   darkMode: ['class'],
@@ -104,13 +116,12 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-gradient': 'linear-gradient(90deg, rgba(10,61,34,0.6) 0%, rgba(139,0,0,0.6) 100%)',
       },
-
       scale: {
         '98': '0.98',
       },
     },
   },
-  plugins: [animatePlugin],
+  plugins: [animatePlugin, safeAreaPlugin],
 }
 
 export default config

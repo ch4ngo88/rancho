@@ -1,12 +1,12 @@
 /* TEAM */
 Developer: Marco da Silva Dácio
-Email: g.c.r.f.p@hotmail.com
+Email: info [at] tradicoesportuguesas [dot] com
 Contact: https://tradicoesportuguesas.com/#/contact
 Instagram: @tradicoesportuguesas.hamburg
 Location: Hamburg, Germany
 
 /* SITE */
-Last update: 2025-05-15
+Last update: 2025-05-18
 Languages: German, Portuguese
 Doctype: HTML5
 Framework: React
