@@ -124,6 +124,52 @@
     <meta name="msapplication-config" content="/browserconfig.xml" />
 
     <!-- Structured Data -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "31. Portugiesisches Folklore Festival - Dia de Portugal",
+        "startDate": "2025-06-14T12:00:00+02:00",
+        "endDate": "2025-06-14T22:00:00+02:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Landhaus Walter",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Otto-Wels-Straße 2",
+            "addressLocality": "Hamburg",
+            "postalCode": "22303",
+            "addressCountry": "DE"
+          }
+        },
+        "image": ["https://tradicoesportuguesas.com/images/activity/next/diadeportugal.webp"],
+        "description": "31. Portugiesisches Folklore Festival mit Live Band NOVO SOM und direkt aus Portugal: Claudia Martins & Minhotos Marotos. Von 12:00 bis 22:00 Uhr gibt es Essen, Trinken, Musik, Folklore und Aktivitäten für Kinder.",
+        "isAccessibleForFree": false,
+        "offers": {
+          "@type": "Offer",
+          "url": "https://diadeportugal.ticket.io/eg0vus7w/",
+          "price": "20",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2025-05-01T09:00:00+02:00",
+          "priceValidUntil": "2025-06-14T10:00:00+02:00"
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Tradições Portuguesas Hamburg",
+          "url": "https://tradicoesportuguesas.com"
+        },
+        "performer": [
+          { "@type": "PerformingGroup", "name": "Rancho Folclórico Tradições Portuguesas Hamburg" },
+          { "@type": "MusicGroup", "name": "NOVO SOM" },
+          { "@type": "MusicGroup", "name": "Claudia Martins & Minhotos Marotos" }
+        ],
+        "url": "https://tradicoesportuguesas.com/#/activities"
+      }
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -131,60 +177,39 @@
         "name": "Tradições Portuguesas - Rancho Folclórico Hamburg",
         "url": "https://tradicoesportuguesas.com",
         "logo": "https://tradicoesportuguesas.com/images/logo.png",
-        "sameAs": [
-          "https://www.facebook.com/tradicoesportuguesas.hamburg",
-          "https://www.instagram.com/tradicoesportuguesas.hamburg"
-        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hastedtstraße 30",
+          "addressLocality": "Hamburg",
+          "postalCode": "21073",
+          "addressCountry": "DE"
+        },
         "contactPoint": {
           "@type": "ContactPoint",
-          "telephone": "+49-40-12345678",
+          "telephone": "+49-157-31625061",
+          "email": "g.c.r.f.p@hotmail.com",
           "contactType": "customer service",
-          "areaServed": "Hamburg",
-          "availableLanguage": ["German", "Portuguese"]
+          "areaServed": "DE",
+          "availableLanguage": ["de", "pt"]
         },
+        "employee": [
+          { "@type": "Person", "name": "Marco da Silva Dácio", "jobTitle": "Leitung / Vorstand" },
+          {
+            "@type": "Person",
+            "name": "Mariana Marcelo Rodrigues",
+            "jobTitle": "Leitung / Vorstand"
+          }
+        ],
+        "sameAs": [
+          "https://www.youtube.com/@tradicoesportuguesasdeharb1754",
+          "https://www.facebook.com/portugiesischerverein.harburg?locale=de_DE",
+          "https://www.instagram.com/tradicoes_portuguesas/",
+          "https://www.tiktok.com/@tradies.portugues"
+        ],
         "description": "Rancho Folclórico Tradições Portuguesas - Bewahrung der portugiesischen Kultur in Hamburg seit 1979"
       }
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Portugiesischer Folkloreabend",
-        "startDate": "2025-05-15T19:00",
-        "endDate": "2025-05-15T22:00",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Kulturzentrum Hamburg",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Beispielstraße 123",
-            "addressLocality": "Hamburg",
-            "postalCode": "22083",
-            "addressCountry": "DE"
-          }
-        },
-        "image": "https://tradicoesportuguesas.com/images/home/gruppe.webp",
-        "description": "Ein Abend mit traditionellen portugiesischen Tänzen und Musik",
-        "offers": {
-          "@type": "Offer",
-          "url": "https://tradicoesportuguesas.com/activities",
-          "price": "10",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock"
-        },
-        "organizer": {
-          "@type": "Organization",
-          "name": "Tradições Portuguesas Hamburg",
-          "url": "https://tradicoesportuguesas.com"
-        },
-        "performer": {
-          "@type": "PerformingGroup",
-          "name": "Rancho Folclórico Tradições Portuguesas Hamburg"
-        }
-      }
-    </script>
+
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -195,9 +220,9 @@
         })
       }
     </script>
-    <script type="module" crossorigin src="/assets/index-rpfh16H5.js"></script>
+    <script type="module" crossorigin src="/assets/index-Ctbo3KTF.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-CGMKHPyC.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DkEvRSxy.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-QP-Eo4nT.css">
   </head>
   <body>
     <div id="root"></div>
