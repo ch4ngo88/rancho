@@ -4,7 +4,7 @@ const OFFLINE_URL = '/offline.html'
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
-  '/manifest.json',
+  '/site.webmanifest',
   '/images/favicon-32x32.png',
   '/images/android-chrome-192x192.png',
   '/images/android-chrome-512x512.png',
