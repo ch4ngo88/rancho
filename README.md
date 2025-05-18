@@ -79,7 +79,7 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 ## 💌 Kontakt
 
 🎭 Wir freuen uns über neue Mitglieder, Auftrittsanfragen oder Kooperationen!  
-📧 [g.c.r.f.p@hotmail.com](mailto:g.c.r.f.p@hotmail.com)  
+📧 [info@tradicoesportuguesas.com](mailto:info@tradicoesportuguesas.com)  
 📍 **Tradições Portuguesas Hamburg**
 
 ---

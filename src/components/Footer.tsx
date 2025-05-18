@@ -144,10 +144,10 @@ export const Footer = () => {
               <div className="flex items-center justify-center gap-2 md:justify-start">
                 <Mail className="h-4 w-4 flex-shrink-0 text-white/80" />
                 <a
-                  href="mailto:g.c.r.f.p@hotmail.com"
+                  href="mailto:info@tradicoesportuguesas.com"
                   className="transition-colors hover:text-white/60"
                 >
-                  g.c.r.f.p@hotmail.com
+                  info@tradicoesportuguesas.com
                 </a>
               </div>
               <div className="flex items-center justify-center gap-2 md:justify-start">

@@ -225,10 +225,10 @@ const ContactPage = React.memo(() => {
                 <p className="flex items-center gap-3">
                   <Mail className="h-5 w-5 flex-shrink-0 text-seagreen" />
                   <a
-                    href="mailto:g.c.r.f.p@hotmail.com"
+                    href="mailto:info@tradicoesportuguesas.com"
                     className="transition-colors duration-300 hover:text-seagreen"
                   >
-                    g.c.r.f.p@hotmail.com
+                    info@tradicoesportuguesas.com
                   </a>
                 </p>
                 <p className="flex items-center gap-3">

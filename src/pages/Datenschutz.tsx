@@ -47,7 +47,7 @@ const Datenschutz = () => {
                 <br />
                 21073 Hamburg
                 <br />
-                E-Mail: g.c.r.f.p@hotmail.com
+                E-Mail: info@tradicoesportuguesas.com
               </p>
             </div>
           </section>

@@ -58,7 +58,7 @@ const Impressum = () => {
                 {language === 'pt' ? 'Contato' : 'Kontakt'}
               </h2>
             </div>
-            <p className="pl-6 text-gray-700">E-Mail: g.c.r.f.p@hotmail.com</p>
+            <p className="pl-6 text-gray-700">E-Mail: info@tradicoesportuguesas.com</p>
           </section>
 
           {/* Inhaltlich Verantwortlich */}
