@@ -3,7 +3,7 @@ import { useLanguage } from '@/hooks/useLanguage'
 
 const SeoMeta = () => {
   const { language } = useLanguage()
-  const langCode = language === 'de' ? 'de' : 'pt'
+  const langCode = language === 'de' ? 'de-DE' : 'pt-PT'
   const href = 'https://tradicoesportuguesas.com/'
 
   return (
