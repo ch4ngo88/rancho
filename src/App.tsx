@@ -19,6 +19,7 @@ import NotFound from './pages/NotFound'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import SeoMeta from '@/utils/seoMeta'
 
 const queryClient = new QueryClient()
 
@@ -31,6 +32,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
+        <SeoMeta />
         <Toaster />
         <Sonner />
         <Router>

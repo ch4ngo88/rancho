@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
+
 // ───────────────────────────────────────────────────────────
 // 1) Lazy‑geladene Root‑App
 // ───────────────────────────────────────────────────────────
@@ -16,9 +18,11 @@ const LoadingFallback = () => (
 // 3) Mount React
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Suspense fallback={<LoadingFallback />}>
-      <App />
-    </Suspense>
+    <HelmetProvider>
+      <Suspense fallback={<LoadingFallback />}>
+        <App />
+      </Suspense>
+    </HelmetProvider>
   </React.StrictMode>,
 )
 
@@ -33,9 +37,7 @@ const prefetchChunks = [
   () => import('./pages/Membros'),
 ]
 
-// requestIdleCallback‑Shim für Browser ohne native Unterstützung
 const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1))
-
 idle(() => {
   prefetchChunks.forEach((fn) => fn())
 })
