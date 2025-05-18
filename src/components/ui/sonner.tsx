@@ -6,7 +6,7 @@ type ToasterProps = React.ComponentProps<typeof Sonner>
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = 'system' } = useTheme()
 
-  // "theme" kann undefined sein – also typ-sicher abfangen
+  // "theme" kann undefined sein - also typ-sicher abfangen
   const themeValue: 'light' | 'dark' | 'system' =
     theme === 'light' || theme === 'dark' || theme === 'system' ? theme : 'system'
 

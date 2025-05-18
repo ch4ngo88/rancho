@@ -105,7 +105,7 @@ const Impressum = () => {
               </p>
               <p>
                 {language === 'pt'
-                  ? 'Caso observe alguma violação de direitos, por favor, nos informe – os conteúdos em questão serão removidos imediatamente.'
+                  ? 'Caso observe alguma violação de direitos, por favor, nos informe - os conteúdos em questão serão removidos imediatamente.'
                   : 'Sollten Sie eine Urheberrechtsverletzung feststellen, bitten wir um einen Hinweis. Entsprechende Inhalte werden umgehend entfernt.'}
               </p>
             </div>

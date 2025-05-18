@@ -4,7 +4,7 @@ set -euo pipefail
 echo "✅ Checking current branch..."
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [ "$BRANCH" != "main" ]; then
-  echo "❌ Du bist nicht auf 'main' – aktuell auf '$BRANCH'. Abbruch."
+  echo "❌ Du bist nicht auf 'main' - aktuell auf '$BRANCH'. Abbruch."
   exit 1
 fi
 

@@ -35,8 +35,8 @@ const translations: Translations = {
     de: 'Über uns',
   },
   welcome: {
-    pt: 'Bem-vindos ao Rancho Folclórico Tradições Portuguesas – a nossa segunda casa, o nosso pedaço de Portugal em Hamburgo.',
-    de: 'Willkommen beim Rancho Folclórico Tradições Portuguesas – unser zweites Zuhause, unser Stück Portugal in Hamburg.',
+    pt: 'Bem-vindos ao Rancho Folclórico Tradições Portuguesas - a nossa segunda casa, o nosso pedaço de Portugal em Hamburgo.',
+    de: 'Willkommen beim Rancho Folclórico Tradições Portuguesas - unser zweites Zuhause, unser Stück Portugal in Hamburg.',
   },
   intro: {
     pt: 'Desde 1979, celebramos juntos a cultura, a música e as tradições que nos ligam às nossas raízes.',
@@ -59,8 +59,8 @@ const translations: Translations = {
     de: 'Portugal von Nord bis Süd',
   },
   varietyText: {
-    pt: 'Representamos o folclore de todo o país – das danças animadas do Minho às elegantes do Ribatejo, até aos passos alegres do Algarve. Cada membro tem a oportunidade de mostrar com orgulho as tradições da sua região de origem. A nossa força está na diversidade que nos une!',
-    de: 'Wir repräsentieren die Folklore des ganzen Landes – von den lebhaften Tänzen des Minho über die eleganten des Ribatejo bis zu den fröhlichen Schritten des Algarve. Jedes Mitglied hat die Möglichkeit, stolz die Traditionen seiner Herkunftsregion zu zeigen. Unsere Stärke liegt in der Vielfalt, die uns vereint!',
+    pt: 'Representamos o folclore de todo o país - das danças animadas do Minho às elegantes do Ribatejo, até aos passos alegres do Algarve. Cada membro tem a oportunidade de mostrar com orgulho as tradições da sua região de origem. A nossa força está na diversidade que nos une!',
+    de: 'Wir repräsentieren die Folklore des ganzen Landes - von den lebhaften Tänzen des Minho über die eleganten des Ribatejo bis zu den fröhlichen Schritten des Algarve. Jedes Mitglied hat die Möglichkeit, stolz die Traditionen seiner Herkunftsregion zu zeigen. Unsere Stärke liegt in der Vielfalt, die uns vereint!',
   },
   timeTravel: {
     pt: 'Uma viagem no tempo',

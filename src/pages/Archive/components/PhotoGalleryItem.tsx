@@ -14,11 +14,11 @@ interface PhotoGalleryItemProps {
 
 /**
  * Liefert ein menschenlesbares alt-Attribut aus dem Dateinamen.
- * – Fügt hier nach Bedarf einfach neue Zuordnungen ein.
+ * - Fügt hier nach Bedarf einfach neue Zuordnungen ein.
  */
 const getDescriptiveAlt = (imagePath: string) => {
   const fileName = imagePath.split('/').pop()?.split('.')[0]
-  if (!fileName) return 'Archivbild von Rancho Folclórico Tradições Portuguesas'
+  if (!fileName) return 'Archivbild von Rancho Folclórico Tradições Portuguesas'
 
   const imageDescriptions: Record<string, string> = {
     '1': 'Historische Aufnahme der Tanzgruppe bei einer traditionellen Aufführung',

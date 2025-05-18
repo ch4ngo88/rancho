@@ -38,7 +38,7 @@ const EventCard = ({ event }: EventCardProps) => {
     year: 'numeric',
   })
 
-  const altText = `${event.title} – ${
+  const altText = `${event.title} - ${
     language === 'pt' ? 'Evento em' : 'Veranstaltung in'
   } ${event.location} ${language === 'pt' ? 'no dia' : 'am'} ${dateLong}`
 
@@ -54,7 +54,7 @@ const EventCard = ({ event }: EventCardProps) => {
             className="relative h-[250px] cursor-pointer md:w-1/3"
             role="button"
             aria-label={
-              videoSrc ? `${event.title} – Video öffnen` : `${event.title} – Bild anzeigen`
+              videoSrc ? `${event.title} - Video öffnen` : `${event.title} - Bild anzeigen`
             }
           >
             {imgSrc && (

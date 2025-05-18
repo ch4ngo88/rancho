@@ -45,7 +45,7 @@ export const useUpcomingEvents = (): EventType[] => {
       description:
         language === 'pt'
           ? 'No restaurante e centro de eventos Poseidon em Seevetal, com música ao vivo do grupo Estrela da Noite e buffet a partir das 19h. Celebração especial de Pentecostes com comida portuguesa e alemã.'
-          : 'Im Restaurant & Veranstaltungszentrum Poseidon in Seevetal – Pfingstfeier mit Live-Musik von Estrela da Noite und Buffet ab 19 Uhr. Ein besonderer Abend mit portugiesisch-deutscher Küche.',
+          : 'Im Restaurant & Veranstaltungszentrum Poseidon in Seevetal - Pfingstfeier mit Live-Musik von Estrela da Noite und Buffet ab 19 Uhr. Ein besonderer Abend mit portugiesisch-deutscher Küche.',
       location: 'Bürgermeister-Heitmann-Str. 34c, 21217 Seevetal',
     },
     {

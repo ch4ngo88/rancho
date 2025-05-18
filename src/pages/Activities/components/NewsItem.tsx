@@ -75,7 +75,7 @@ const NewsItem = ({ item }: NewsItemProps) => {
         <DialogDescription asChild>
           <p className="sr-only">
             {(item.type === 'video' ? 'Video' : 'Bild') +
-              ' – ' +
+              ' - ' +
               (item.title || 'Medienbeschreibung')}
           </p>
         </DialogDescription>

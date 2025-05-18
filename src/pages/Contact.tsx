@@ -30,7 +30,7 @@ const usefulLinks: UsefulLink[] = [
   {
     url: 'https://folclore.pt/',
     icon: 'images/links/cropped-portal-logo.webp',
-    title: 'Folclore de Portugal – O Portal do Folclore Português',
+    title: 'Folclore de Portugal - O Portal do Folclore Português',
   },
   {
     url: 'https://www.ffp.pt/',
@@ -66,7 +66,7 @@ const usefulLinks: UsefulLink[] = [
 
 const ContactForm = () => {
   const { language } = useLanguage()
-  const [state, handleSubmit] = useForm('xyyrvvyd') // <- Dein Formspree-ID hier
+  const [state, handleSubmit] = useForm('xyzwvgyw') // <- Dein Formspree-ID hier
 
   const [formData, setFormData] = useState({
     name: '',

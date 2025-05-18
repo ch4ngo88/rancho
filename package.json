@@ -16,7 +16,7 @@
     "preview": "vite preview",
     "analyze": "vite build --sourcemap && source-map-explorer dist/assets/*.js",
     "reset": "pnpm run clean && rm -rf node_modules && pnpm install",
-    "prelive": "node -e \"const b = require('child_process').execSync('git rev-parse --abbrev-ref HEAD').toString().trim(); if (b !== 'main') { console.error(`❌ Du bist nicht auf 'main' – sondern auf '${b}'`); process.exit(1) } else { console.log('✅ Auf main – weiter geht\\'s!') }\"",
+    "prelive": "node -e \"const b = require('child_process').execSync('git rev-parse --abbrev-ref HEAD').toString().trim(); if (b !== 'main') { console.error(`❌ Du bist nicht auf 'main' - sondern auf '${b}'`); process.exit(1) } else { console.log('✅ Auf main - weiter geht\\'s!') }\"",
     "live": "pnpm run prelive && bash ./deploy.sh"
   },
   "dependencies": {

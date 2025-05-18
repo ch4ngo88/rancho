@@ -44,8 +44,8 @@ const EnsaiosSection = ({ ensaios }: EnsaiosSectionProps) => {
           const imgSrc = asset(ensaio.image) // erzeugt korrekten Pfad
           const altText =
             language === 'pt'
-              ? `Ensaio de ${ensaio.title} – ${ensaio.schedule}`
-              : `${ensaio.title} Probe – ${ensaio.schedule}`
+              ? `Ensaio de ${ensaio.title} - ${ensaio.schedule}`
+              : `${ensaio.title} Probe - ${ensaio.schedule}`
 
           return (
             <div

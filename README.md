@@ -1,7 +1,7 @@
 # Tradições Portuguesas Hamburg
 
 **Offizielle Website der Tanzgruppe Tradições Portuguesas aus Hamburg**  
-📍 Portugiesischer Folkloreverein – gegründet aus Liebe zur Kultur und Musik
+📍 Portugiesischer Folkloreverein - gegründet aus Liebe zur Kultur und Musik
 
 👉 [Website ansehen](https://tradicoesportuguesas.com)
 
@@ -25,7 +25,7 @@ Diese Website bietet Informationen über:
 - Möglichkeiten zur **Kontaktaufnahme**
 - einen Einblick in unsere **Geschichte & Kultur**
 
-Die Seite wurde modern und barrierearm entwickelt – optimiert für Mobilgeräte und Desktop.
+Die Seite wurde modern und barrierearm entwickelt - optimiert für Mobilgeräte und Desktop.
 
 ---
 
@@ -69,10 +69,10 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 - typescript-eslint für statische Typprüfung
 - Vite Plugins: `vite-tsconfig-paths`, `plugin-react-swc`
 - Analyse mit `source-map-explorer`
-- Tooling via **pnpm** – schnell, konsistent, monorepo-tauglich
+- Tooling via **pnpm** - schnell, konsistent, monorepo-tauglich
 
 📨 **Formulare** nutzen [Formspree](https://formspree.io/) für sicheren, serverlosen E-Mail-Versand ohne eigene Backend-Logik.  
-🌐 **Deployment** erfolgt über **GitHub Pages** mit eigener Domain – vollständig statisch.
+🌐 **Deployment** erfolgt über **GitHub Pages** mit eigener Domain - vollständig statisch.
 
 ---
 
@@ -84,5 +84,5 @@ Sie basiert auf einem modernen Frontend-Stack mit Fokus auf Performance, Barrier
 
 ---
 
-© 2025 – Tradições Portuguesas Hamburg  
+© 2025 - Tradições Portuguesas Hamburg  
 _Made with ❤️ in Hamburg by Marco da Silva Dácio_
