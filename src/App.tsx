@@ -37,7 +37,7 @@ const App = () => (
         <Sonner />
         <Router>
           <ScrollToTopWrapper>
-            <div className="flex min-h-screen flex-col">
+            <div className="scrollbar-stable flex min-h-screen flex-col overflow-y-auto">
               <Header />
               <main className="flex-grow">
                 <Routes>

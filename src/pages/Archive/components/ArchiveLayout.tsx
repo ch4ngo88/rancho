@@ -13,12 +13,14 @@ const ArchiveLayout = ({ children, activeTab, setActiveTab }: ArchiveLayoutProps
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="section-title mb-0">{language === 'pt' ? 'Arquivo' : 'Archiv'}</h1>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <h1 className="section-title text-2xl font-bold">
+          {language === 'pt' ? 'Arquivo' : 'Archiv'}
+        </h1>
         <NavigationTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
 
-      {children}
+      <div className="mt-6">{children}</div>
     </div>
   )
 }

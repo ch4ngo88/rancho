@@ -44,12 +44,9 @@ const MembrosPage = () => {
   }, [])
 
   return (
-    <div className="container mx-auto px-3 py-6">
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="section-title mb-6">{language === 'pt' ? 'A nossa Equipa' : 'Unser Team'}</h1>
       <div className="mx-auto max-w-5xl">
-        <div className="mb-6">
-          <h2 className="section-title">{language === 'pt' ? 'A nossa Equipa' : 'Unser Team'}</h2>
-        </div>
-
         <MemberSection
           title={language === 'pt' ? 'Gerência' : 'Leitung'}
           icon={UserRound}
