@@ -102,3 +102,9 @@
     @apply font-lusitana;
   }
 }
+@media (min-width: 768px) {
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+}

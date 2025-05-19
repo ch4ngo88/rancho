@@ -6,8 +6,3 @@
 @import './forms.css';
 @import './ui-components.css';
 @import './animations.css';
-
-html {
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
-}
