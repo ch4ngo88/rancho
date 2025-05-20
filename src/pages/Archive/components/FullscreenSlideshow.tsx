@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, type ReactElement } from 'react'
+import React, { useEffect, useRef, useState, type ReactElement } from 'react'
 import { Play } from 'lucide-react'
 import { asset } from '@/lib/asset'
 
@@ -56,131 +56,116 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
   const [mode, setMode] = useState<'idle' | 'fullscreen' | 'playing'>('idle')
   const containerRef = useRef<HTMLDivElement>(null)
 
-  /* -------------------- Callbacks / Handler ------------------ */
-
-  const exitNativeFullscreen = (): void => {
-    const doc = document as FullscreenDocument
-    const exit = doc.exitFullscreen ?? doc.webkitExitFullscreen ?? doc.msExitFullscreen
-    exit?.call(doc).catch(() => undefined)
-  }
-
-  const handleClose = useCallback((): void => {
-    exitNativeFullscreen()
-    setMode('idle')
-    requestAnimationFrame(onClose)
-  }, [onClose])
-
-  const nextStep = useCallback((): void => {
-    if (!isPhone()) return handleClose()
-
-    setMode((prev) => {
-      switch (prev) {
-        case 'idle':
-          requestAnimationFrame(() => window.scrollTo(0, 1))
-          return 'fullscreen'
-        case 'fullscreen':
-          return 'playing'
-        case 'playing':
-          handleClose()
-          return prev
-        default:
-          return prev
-      }
-    })
-  }, [handleClose])
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
-    e.preventDefault()
-    nextStep()
-  }
-
-  /* --------------------- Seiteneffekte ----------------------- */
-
   useEffect(() => {
     setShuffledImages(shuffleArray(images))
     setIndex(0)
   }, [images])
 
+  // 🧠 Für Desktop/iPad: Auto-Vollbild via useEffect
   useEffect(() => {
     if (isPhone()) return
 
     const el = containerRef.current as FullscreenElement | null
-    if (!el) return
-
-    const request = el.requestFullscreen ?? el.webkitRequestFullscreen ?? el.msRequestFullscreen
+    const request = el?.requestFullscreen ?? el?.webkitRequestFullscreen ?? el?.msRequestFullscreen
     request?.call(el).catch(() => undefined)
     setMode('playing')
   }, [])
 
+  // 📤 Für alle: Handle FS-Wechsel (z.B. durch iOS "Fertig"-Button)
   useEffect(() => {
     const doc = document as FullscreenDocument
-
-    const handleChange = (): void => {
-      const stillFs =
-        Boolean(doc.fullscreenElement) ||
-        Boolean(doc.webkitFullscreenElement) ||
-        Boolean(doc.msFullscreenElement)
-
-      if (!stillFs) handleClose()
+    const onFsChange = () => {
+      const stillFullscreen =
+        !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
+      if (!stillFullscreen) {
+        setMode('idle')
+        requestAnimationFrame(onClose)
+      }
     }
 
-    document.addEventListener('fullscreenchange', handleChange)
-    document.addEventListener('webkitfullscreenchange', handleChange)
-    document.addEventListener('msfullscreenchange', handleChange)
+    document.addEventListener('fullscreenchange', onFsChange)
+    document.addEventListener('webkitfullscreenchange', onFsChange)
+    document.addEventListener('msfullscreenchange', onFsChange)
 
     return () => {
-      document.removeEventListener('fullscreenchange', handleChange)
-      document.removeEventListener('webkitfullscreenchange', handleChange)
-      document.removeEventListener('msfullscreenchange', handleChange)
+      document.removeEventListener('fullscreenchange', onFsChange)
+      document.removeEventListener('webkitfullscreenchange', onFsChange)
+      document.removeEventListener('msfullscreenchange', onFsChange)
     }
-  }, [handleClose])
+  }, [onClose])
 
+  // 🔁 Diashow-Loop
   useEffect(() => {
-    if (mode !== 'playing' || shuffledImages.length === 0) return undefined
-
-    const id = window.setInterval(
-      () => setIndex((prev) => (prev + 1) % shuffledImages.length),
-      5000,
-    )
-    return () => window.clearInterval(id)
+    if (mode !== 'playing' || shuffledImages.length === 0) return
+    const id = window.setInterval(() => {
+      setIndex((prev) => (prev + 1) % shuffledImages.length)
+    }, 5000)
+    return () => clearInterval(id)
   }, [mode, shuffledImages])
 
   useEffect(() => {
-    if (mode === 'idle') return undefined
-
-    const { body } = document
-    const original = body.style.overflow
-    body.style.overflow = 'hidden'
-
+    if (mode === 'idle') return
+    const original = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     return () => {
-      body.style.overflow = original
+      document.body.style.overflow = original
     }
   }, [mode])
 
-  /* --------------------------- Render ------------------------ */
+  // 👉 NEU: Klick auf Container = erste Interaktion auf Mobile
+  const handleInitialClick = async () => {
+    if (!isPhone()) return
+
+    const el = containerRef.current as FullscreenElement | null
+    const request = el?.requestFullscreen ?? el?.webkitRequestFullscreen ?? el?.msRequestFullscreen
+    try {
+      await request?.call(el)
+      setMode('fullscreen')
+    } catch {
+      // Safari könnte blockieren – einfach ignorieren
+    }
+  }
+
+  const handlePlayClick = () => {
+    if (mode === 'fullscreen') {
+      setMode('playing')
+    } else if (mode === 'playing') {
+      const doc = document as FullscreenDocument
+      const exit = doc.exitFullscreen ?? doc.webkitExitFullscreen ?? doc.msExitFullscreen
+      exit?.call(doc)
+      setMode('idle')
+      requestAnimationFrame(onClose)
+    }
+  }
 
   return (
     <div
       ref={containerRef}
       role="presentation"
       className="fixed inset-0 z-[9999] flex h-svh w-svw items-center justify-center bg-black"
-      onClick={!isPhone() ? nextStep : undefined}
-      onTouchStart={isPhone() ? handleTouchStart : undefined}
+      onClick={isPhone() ? handleInitialClick : handlePlayClick}
     >
+      {/* Play Button nur im fullscreen-Modus, nicht playing */}
       {isPhone() && mode === 'fullscreen' && (
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm">
+          <button
+            onClick={handlePlayClick}
+            className="rounded-full bg-white/20 p-4 backdrop-blur-sm"
+          >
             <Play className="h-8 w-8 text-white" aria-hidden="true" />
-          </div>
+          </button>
         </div>
       )}
 
-      <img
-        src={asset(shuffledImages[index] ?? '')}
-        alt=""
-        className="max-h-full max-w-full select-none object-contain transition-opacity duration-500"
-        draggable={false}
-      />
+      {/* Das aktuelle Bild */}
+      {mode === 'playing' && (
+        <img
+          src={asset(shuffledImages[index] ?? '')}
+          alt=""
+          className="max-h-full max-w-full select-none object-contain transition-opacity duration-500"
+          draggable={false}
+        />
+      )}
     </div>
   )
 }
