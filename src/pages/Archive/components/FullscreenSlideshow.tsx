@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, type ReactElement } from 'react'
 import { Play } from 'lucide-react'
 import { asset } from '@/lib/asset'
+import { createPortal } from 'react-dom'
 
 /* ------------------------------------------------------------------ */
 /* Typen für vendor-spezifische Full-Screen-APIs                      */
@@ -138,7 +139,7 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     }
   }
 
-  return (
+  return createPortal(
     <div
       ref={containerRef}
       role="presentation"
@@ -166,7 +167,8 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
           draggable={false}
         />
       )}
-    </div>
+    </div>,
+    document.body,
   )
 }
 
