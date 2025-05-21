@@ -3,9 +3,6 @@ import { createPortal } from 'react-dom'
 import { Play } from 'lucide-react'
 import { asset } from '@/lib/asset'
 
-/* ------------------------------------------------------------------ */
-/* Typen für vendor-spezifische Full-Screen-APIs                      */
-/* ------------------------------------------------------------------ */
 type FullscreenDocument = Document & {
   webkitExitFullscreen?: () => Promise<void>
   msExitFullscreen?: () => Promise<void>
@@ -18,17 +15,11 @@ type FullscreenElement = HTMLElement & {
   msRequestFullscreen?: () => Promise<void>
 }
 
-/* ------------------------------------------------------------------ */
-/* Props                                                              */
-/* ------------------------------------------------------------------ */
 interface FullscreenSlideshowProps {
   images: string[]
   onClose: () => void
 }
 
-/* ------------------------------------------------------------------ */
-/* Helper                                                             */
-/* ------------------------------------------------------------------ */
 const shuffleArray = (array: string[]): string[] => {
   const copy = [...array]
   for (let i = copy.length - 1; i > 0; i--) {
@@ -43,9 +34,6 @@ const isPhone = (): boolean =>
   window.matchMedia('(hover: none) and (pointer: coarse)').matches &&
   navigator.maxTouchPoints > 1
 
-/* ------------------------------------------------------------------ */
-/* Komponente                                                         */
-/* ------------------------------------------------------------------ */
 const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
   images,
   onClose,
@@ -54,18 +42,13 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
   const [index, setIndex] = useState(0)
   const [mode, setMode] = useState<'idle' | 'fullscreen' | 'playing'>('idle')
   const containerRef = useRef<HTMLDivElement>(null)
+  const isClosingRef = useRef(false)
 
-  /* -------------------------------------------------------------- */
-  /* Bilder vorbereiten                                              */
-  /* -------------------------------------------------------------- */
   useEffect(() => {
     setShuffledImages(shuffleArray(images))
     setIndex(0)
   }, [images])
 
-  /* -------------------------------------------------------------- */
-  /* Desktop/iPad: direkt echtes Fullscreen + Auto-Play              */
-  /* -------------------------------------------------------------- */
   useEffect(() => {
     if (isPhone()) return
     const el = containerRef.current as FullscreenElement | null
@@ -74,9 +57,6 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     setMode('playing')
   }, [])
 
-  /* -------------------------------------------------------------- */
-  /* Fullscreen-Änderungen (z. B. „Fertig“-Button)                   */
-  /* -------------------------------------------------------------- */
   useEffect(() => {
     const doc = document as FullscreenDocument
     const onFsChange = () => {
@@ -84,7 +64,10 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
         !!doc.fullscreenElement || !!doc.webkitFullscreenElement || !!doc.msFullscreenElement
       if (!stillFs) {
         setMode('idle')
-        requestAnimationFrame(onClose)
+        requestAnimationFrame(() => {
+          isClosingRef.current = false
+          onClose()
+        })
       }
     }
     document.addEventListener('fullscreenchange', onFsChange)
@@ -97,9 +80,6 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     }
   }, [onClose])
 
-  /* -------------------------------------------------------------- */
-  /* Diashow-Loop                                                    */
-  /* -------------------------------------------------------------- */
   useEffect(() => {
     if (mode !== 'playing' || shuffledImages.length === 0) return
     const id = window.setInterval(() => {
@@ -108,9 +88,6 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     return () => clearInterval(id)
   }, [mode, shuffledImages])
 
-  /* -------------------------------------------------------------- */
-  /* Body-Overflow während Fullscreen                                */
-  /* -------------------------------------------------------------- */
   useEffect(() => {
     if (mode === 'idle') return
     const original = document.body.style.overflow
@@ -120,30 +97,23 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     }
   }, [mode])
 
-  /* -------------------------------------------------------------- */
-  /* Mobile-Workflow:                                                */
-  /* 1. Tap   -> echtes Fullscreen-API (mode = fullscreen)           */
-  /* 2. Button-> Start Slideshow     (mode = playing)                */
-  /* 3. Tap   -> Exit & Close                                       */
-  /* -------------------------------------------------------------- */
   const enterFullscreenMobile = async () => {
     const el = containerRef.current as FullscreenElement | null
     const request = el?.requestFullscreen ?? el?.webkitRequestFullscreen ?? el?.msRequestFullscreen
     try {
       await request?.call(el)
-
-      // Sicherstellen, dass der Play-Button nach dem Vollbild auch erscheint
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         setMode('fullscreen')
-      })
+      }, 0)
     } catch {
       // Safari könnte blocken – ignorieren
     }
   }
 
   const handleContainerClick = () => {
+    if (isClosingRef.current) return
+
     if (!isPhone()) {
-      // Desktop/iPad -> Klick beendet
       handleClose()
       return
     }
@@ -153,27 +123,24 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     } else if (mode === 'playing') {
       handleClose()
     }
-    // Wenn mode === 'fullscreen' -> tue nichts, Button übernimmt
+    // Wenn mode === 'fullscreen', übernimmt der Button
   }
 
   const handlePlayButtonClick = (e: React.MouseEvent) => {
-    e.stopPropagation() // verhindert Bubble zum Container
+    e.stopPropagation()
     if (mode === 'fullscreen') {
       setMode('playing')
     }
   }
 
   const handleClose = () => {
+    isClosingRef.current = true
     const doc = document as FullscreenDocument
     const exitFs = doc.exitFullscreen ?? doc.webkitExitFullscreen ?? doc.msExitFullscreen
     exitFs?.call(doc)
     setMode('idle')
-    requestAnimationFrame(onClose)
   }
 
-  /* -------------------------------------------------------------- */
-  /* Render                                                         */
-  /* -------------------------------------------------------------- */
   return createPortal(
     <div
       ref={containerRef}
@@ -182,19 +149,21 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
       onClick={handleContainerClick}
       onTouchStart={isPhone() ? handleContainerClick : undefined}
     >
-      {/* Play-Button (nur im fullscreen-Modus auf Phone) */}
-      {isPhone() && mode === 'fullscreen' && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <button
-            onClick={handlePlayButtonClick}
-            className="rounded-full bg-white/20 p-4 backdrop-blur-sm"
-          >
-            <Play className="h-8 w-8 text-white" aria-hidden="true" />
-          </button>
-        </div>
-      )}
+      {/* Play-Button immer da, sichtbar nur bei mode === fullscreen */}
+      <div
+        className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 ${
+          isPhone() && mode === 'fullscreen' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <button
+          onClick={handlePlayButtonClick}
+          className="rounded-full bg-white/20 p-4 backdrop-blur-sm"
+        >
+          <Play className="h-8 w-8 text-white" aria-hidden="true" />
+        </button>
+      </div>
 
-      {/* Aktuelles Bild – nur während playing */}
+      {/* Bildanzeige */}
       {mode === 'playing' && (
         <img
           src={asset(shuffledImages[index] ?? '')}
