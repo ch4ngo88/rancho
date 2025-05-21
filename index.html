@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="de-DE">
   <head>
+    <!-- 1. Document Settings -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Tradições Portuguesas - Rancho Folclórico Hamburg</title>
 
-    <!-- Preload critical hero image -->
+    <!-- 2. Preload Critical Assets -->
+    <link rel="preload" as="image" href="/images/logo.png" />
 
-    <!-- SEO Metadata -->
+    <!-- 3. SEO Basics -->
     <meta name="author" content="Marco da Silva Dácio" />
     <meta
       name="keywords"
@@ -19,17 +20,25 @@
       name="description"
       content="Tradições Portuguesas ist ein portugiesischer Folklore-Verein aus Hamburg. Tanz, Tradition und Kultur aus Portugal - authentisch seit 1979."
     />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index,follow" />
     <link rel="canonical" href="https://tradicoesportuguesas.com/" />
+
+    <!-- 4. Locale & Language Info -->
     <meta name="geo.region" content="DE" />
     <meta name="geo.placename" content="Hamburg" />
     <meta name="language" content="de-DE" />
 
-    <!-- Alternate language versions -->
+    <!-- 5. Alternate Language Versions -->
     <link rel="alternate" hreflang="x-default" href="https://tradicoesportuguesas.com/" />
 
-    <!-- Dublin Core -->
+    <!-- 6. Dublin Core Metadata -->
     <meta name="DC.title" content="Tradições Portuguesas - Rancho Folclórico Hamburg" />
+    <meta name="DC.creator" content="Marco da Silva Dácio" />
+    <meta name="DC.subject" content="Portugiesische Folklore, Kultur, Tanz, Musik, Hamburg" />
     <meta
       name="DC.description"
       content="Bewahrung der portugiesischen Kultur in Hamburg seit 1979"
@@ -38,30 +47,34 @@
     <meta name="DC.language" content="de" />
     <meta name="DC.rights" content="Copyright Tradições Portuguesas Hamburg" />
     <meta name="DC.date" content="2025" />
+    <meta name="DC.format" content="text/html" />
+    <meta name="DC.type" content="Text" />
+    <meta name="DC.coverage" content="Hamburg, Deutschland, Portugal" />
 
-    <!-- Favicons -->
+    <!-- 7. Favicons & Touch Icons -->
     <link rel="icon" href="/images/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png" />
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-
-    <!-- Apple / Android / Pinned -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512x512.png" />
     <link rel="mask-icon" href="/images/logo.png" color="#1a6741" />
     <link rel="apple-touch-startup-image" href="/images/logo.png" />
 
-    <!-- Manifest & Crawler Info -->
+    <!-- 8. App Manifest & Metadata -->
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="security" href="/.well-known/security.txt" />
     <link type="text/plain" rel="author" href="/humans.txt" />
+    <meta name="application-name" content="Tradições Portuguesas" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
     <meta name="generator" content="Vite" />
 
-    <!-- PWA & Theme -->
+    <!-- 9. PWA & Mobile Capabilities -->
     <meta name="theme-color" content="#1a6741" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#1a6741" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -70,9 +83,10 @@
     <meta name="HandheldFriendly" content="true" />
     <meta name="MobileOptimized" content="320" />
 
-    <!-- Content Security & Privacy -->
+    <!-- 10. Privacy & Security Policies -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <meta name="permissions-policy" content="camera=(), microphone=(), geolocation=()" />
     <meta
       http-equiv="Content-Security-Policy"
@@ -87,7 +101,7 @@
   "
     />
 
-    <!-- Open Graph -->
+    <!-- 11. Open Graph Metadata -->
     <meta property="og:title" content="Tradições Portuguesas - Rancho Folclórico Hamburg" />
     <meta
       property="og:description"
@@ -98,29 +112,32 @@
       property="og:image:alt"
       content="Gruppe Tänzer in traditioneller portugiesischer Kleidung - Tradicoes Portuguesas"
     />
-
     <meta property="og:url" content="https://tradicoesportuguesas.com" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tradições Portuguesas" />
     <meta property="og:locale" content="de_DE" />
 
-    <!-- Twitter -->
+    <!-- 12. Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tradicoes_portuguesas" />
+    <meta name="twitter:creator" content="@marcodasilva" />
     <meta name="twitter:title" content="Tradições Portuguesas - Rancho Folclórico Hamburg" />
     <meta
       name="twitter:description"
       content="Bewahrung der portugiesischen Kultur in Hamburg seit 1979"
     />
-    <meta name="twitter:image" content="/images/opengraph.jpg" />
+    <meta name="twitter:image" content="https://tradicoesportuguesas.com/images/opengraph.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Tänzer:innen in traditioneller portugiesischer Tracht auf der Bühne beim Festival"
+    />
 
-    <!-- Structured Data -->
-
+    <!-- 13. Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Event",
         "@id": "https://tradicoesportuguesas.com/#event-dia-de-portugal-2025",
-
         "name": "31. Portugiesisches Folklore Festival - Dia de Portugal",
         "startDate": "2025-06-14T12:00:00+02:00",
         "endDate": "2025-06-14T22:00:00+02:00",
@@ -155,7 +172,18 @@
         "performer": [
           { "@type": "PerformingGroup", "name": "Rancho Folclórico Tradições Portuguesas Hamburg" },
           { "@type": "MusicGroup", "name": "NOVO SOM" },
-          { "@type": "MusicGroup", "name": "Claudia Martins & Minhotos Marotos" }
+          {
+            "@type": "MusicGroup",
+            "name": "Claudia Martins & Minhotos Marotos",
+            "sameAs": [
+              "https://open.spotify.com/intl-de/artist/07bxwGn4PYJNZyKLW8Ir8F",
+              "https://www.youtube.com/@claudiamartinsminhotosmarotos",
+              "https://www.facebook.com/oficial.claudiamartins/",
+              "https://www.instagram.com/minhotos.marotos/",
+              "https://www.instagram.com/oficial.claudiamartins/",
+              "https://www.tiktok.com/@cmartinsmmarotos"
+            ]
+          }
         ],
         "url": "https://tradicoesportuguesas.com/#/activities"
       }
@@ -165,7 +193,6 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "@id": "https://tradicoesportuguesas.com/#organization",
-
         "name": "Tradições Portuguesas - Rancho Folclórico Hamburg",
         "url": "https://tradicoesportuguesas.com",
         "logo": "https://tradicoesportuguesas.com/images/logo.png",
@@ -185,7 +212,6 @@
           "availableLanguage": ["de", "pt"]
         },
         "availableLanguage": ["de-DE", "pt-PT"],
-
         "employee": [
           { "@type": "Person", "name": "Marco da Silva Dácio", "jobTitle": "Leitung / Vorstand" },
           {
@@ -204,6 +230,7 @@
       }
     </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
