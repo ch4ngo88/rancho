@@ -152,7 +152,7 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
       {/* Play-Button immer da, sichtbar nur bei mode === fullscreen */}
       <div
         className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 ${
-          isPhone() && mode === 'fullscreen' ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          isPhone() && mode === 'fullscreen' ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
         <button
