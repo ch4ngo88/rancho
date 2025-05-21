@@ -171,8 +171,8 @@ importers:
         specifier: ^1.9.18
         version: 1.9.18
       '@types/node':
-        specifier: ^22.15.20
-        version: 22.15.20
+        specifier: ^22.15.21
+        version: 22.15.21
       '@types/react':
         specifier: ^18.3.21
         version: 18.3.21
@@ -181,7 +181,7 @@ importers:
         version: 18.3.7(@types/react@18.3.21)
       '@vitejs/plugin-react-swc':
         specifier: ^3.9.0
-        version: 3.9.0(vite@6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))
+        version: 3.9.0(vite@6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
@@ -229,10 +229,10 @@ importers:
         version: 8.32.1(eslint@9.27.0(jiti@1.21.7))(typescript@5.8.3)
       vite:
         specifier: ^6.3.5
-        version: 6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
+        version: 6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
       vite-tsconfig-paths:
         specifier: ^5.1.4
-        version: 5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))
+        version: 5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))
 
 packages:
   '@alloc/quick-lru@5.2.0':
@@ -1886,10 +1886,10 @@ packages:
         integrity: sha512-ht2vsoPjezor5Pmzi5hdsA7F++v5UGq9OlUduWHmMZiuQGIpJ2WS5+Gg9HaAA79gNh1AIPtCqhzejcIZ3lPzXQ==,
       }
 
-  '@types/node@22.15.20':
+  '@types/node@22.15.21':
     resolution:
       {
-        integrity: sha512-A6BohGFRGHAscJsTslDCA9JG7qSJr/DWUvrvY8yi9IgnGtMxCyat7vvQ//MFa0DnLsyuS3wYTpLdw4Hf+Q5JXw==,
+        integrity: sha512-EV/37Td6c+MgKAbkcLG6vqZ2zEYHD7bvSrzqqs2RIhbA6w3x+Dqz8MZM3sP6kGTeLrdoOgKZe+Xja7tUB2DNkQ==,
       }
 
   '@types/prop-types@15.7.14':
@@ -6247,7 +6247,7 @@ snapshots:
     dependencies:
       '@types/geojson': 7946.0.16
 
-  '@types/node@22.15.20':
+  '@types/node@22.15.21':
     dependencies:
       undici-types: 6.21.0
 
@@ -6339,10 +6339,10 @@ snapshots:
       '@typescript-eslint/types': 8.32.1
       eslint-visitor-keys: 4.2.0
 
-  '@vitejs/plugin-react-swc@3.9.0(vite@6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))':
+  '@vitejs/plugin-react-swc@3.9.0(vite@6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0))':
     dependencies:
       '@swc/core': 1.11.24
-      vite: 6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -8325,18 +8325,18 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)):
+  vite-tsconfig-paths@5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)):
     dependencies:
       debug: 4.4.1
       globrex: 0.1.2
       tsconfck: 3.1.6(typescript@5.8.3)
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
+      vite: 6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@6.3.5(@types/node@22.15.20)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0):
+  vite@6.3.5(@types/node@22.15.21)(jiti@1.21.7)(terser@5.39.2)(yaml@2.8.0):
     dependencies:
       esbuild: 0.25.4
       fdir: 6.4.4(picomatch@4.0.2)
@@ -8345,7 +8345,7 @@ snapshots:
       rollup: 4.41.0
       tinyglobby: 0.2.13
     optionalDependencies:
-      '@types/node': 22.15.20
+      '@types/node': 22.15.21
       fsevents: 2.3.3
       jiti: 1.21.7
       terser: 5.39.2
