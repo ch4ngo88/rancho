@@ -131,9 +131,13 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
     const request = el?.requestFullscreen ?? el?.webkitRequestFullscreen ?? el?.msRequestFullscreen
     try {
       await request?.call(el)
-      setMode('fullscreen')
+
+      // Sicherstellen, dass der Play-Button nach dem Vollbild auch erscheint
+      requestAnimationFrame(() => {
+        setMode('fullscreen')
+      })
     } catch {
-      /* Safari könnte blocken – ignorieren */
+      // Safari könnte blocken – ignorieren
     }
   }
 

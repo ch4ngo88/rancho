@@ -62,6 +62,11 @@ const usefulLinks: UsefulLink[] = [
     icon: 'images/links/logokp.webp',
     title: 'Kultur Palast Harburg',
   },
+  {
+    url: 'https://info.phg-hh.de/',
+    icon: 'images/links/phg1.webp',
+    title: 'Portugiesisch-Hanseatischen Gesellschaft e.V. Associação Luso-Hanseática',
+  },
 ]
 
 const ContactForm = () => {
