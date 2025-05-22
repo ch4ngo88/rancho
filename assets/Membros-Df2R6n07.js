@@ -1,4 +1,4 @@
-import{r as e,j as a}from"./index-DwxX4c6j.js";import{c as r,b as s,a as t,d as i}from"./useMetaSEO-Bn-g8InX.js";
+import{r as e,j as a}from"./index-S30MMBAk.js";import{c as r,b as s,a as t,d as i}from"./useMetaSEO-BDWPR2fJ.js";
 /**
  * @license lucide-react v0.462.0 - ISC
  *
