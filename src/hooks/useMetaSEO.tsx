@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useLanguage } from './useLanguage';
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { useLanguage } from './useLanguage'
 
 /* -------------------------------------------------- */
 /*                Seiten-Metadaten                    */
@@ -8,10 +8,10 @@ import { useLanguage } from './useLanguage';
 
 type MetaData = {
   [key: string]: {
-    title: { pt: string; de: string };
-    description: { pt: string; de: string };
-  };
-};
+    title: { pt: string; de: string }
+    description: { pt: string; de: string }
+  }
+}
 
 const metadata: MetaData = {
   home: {
@@ -94,120 +94,115 @@ const metadata: MetaData = {
       de: 'Allgemeine Geschäftsbedingungen für Teilnahme und Events des Rancho Folclórico Tradições Portuguesas Hamburg.',
     },
   },
-};
+}
 
 const DEFAULT_META = {
   title: { pt: 'Página Desconhecida', de: 'Unbekannte Seite' },
   description: { pt: 'Esta página não existe.', de: 'Diese Seite existiert nicht.' },
-} as const;
+} as const
 
-const baseUrl = 'https://tradicoesportuguesas.com';
+const baseUrl = 'https://tradicoesportuguesas.com'
 
 /* -------------------------------------------------- */
 /*                   useMetaSEO                       */
 /* -------------------------------------------------- */
 
 export const useMetaSEO = (page: keyof typeof metadata) => {
-  const { language } = useLanguage();
-  const location = useLocation(); // nur EINMAL ausserhalb useEffect
+  const { language } = useLanguage()
+  const location = useLocation() // nur EINMAL ausserhalb useEffect
 
   useEffect(() => {
     /* ---------- Basics & Fallbacks ---------- */
-    const safePathname = location.pathname || '/';
-    const currentMeta = metadata[page] ?? DEFAULT_META;
+    const safePathname = location.pathname || '/'
+    const currentMeta = metadata[page] ?? DEFAULT_META
 
-    const langCode = language === 'de' ? 'de' : 'pt' as const;
-    const langTag  = langCode === 'de' ? 'de-DE' : 'pt-PT';
+    const langCode = language === 'de' ? 'de' : ('pt' as const)
+    const langTag = langCode === 'de' ? 'de-DE' : 'pt-PT'
 
-    const title       = currentMeta.title[langCode];
-    const description = currentMeta.description[langCode];
+    const title = currentMeta.title[langCode]
+    const description = currentMeta.description[langCode]
 
-    const url = `${baseUrl}${safePathname}`;
-         // immer String
+    const url = `${baseUrl}${safePathname}`
+    // immer String
 
     /* ---------- <html lang="…"> ---------- */
     if (document.documentElement.lang !== langTag) {
-      document.documentElement.lang = langTag;
+      document.documentElement.lang = langTag
     }
 
     /* ---------- <title> ---------- */
-    if (document.title !== title) document.title = title;
+    if (document.title !== title) document.title = title
 
     /* ---------- kleine Helfer ---------- */
-    const query = <T extends Element>(selector: string) =>
-      document.querySelector<T>(selector);
+    const query = <T extends Element>(selector: string) => document.querySelector<T>(selector)
 
-    const ensure = <T extends HTMLElement>(
-      maybeNode: T | null,
-      createNode: () => T,
-    ): T => maybeNode ?? createNode();
+    const ensure = <T extends HTMLElement>(maybeNode: T | null, createNode: () => T): T =>
+      maybeNode ?? createNode()
 
     /* ---------- <meta name="description"> ---------- */
     const metaDescription = ensure(
       query<HTMLMetaElement>('meta[name="description"][data-managed="seo"]'),
       () => {
-        const m = document.createElement('meta');
-        m.name = 'description';
-        m.dataset.managed = 'seo';
-        document.head.appendChild(m);
-        return m;
+        const m = document.createElement('meta')
+        m.name = 'description'
+        m.dataset.managed = 'seo'
+        document.head.appendChild(m)
+        return m
       },
-    );
-    if (metaDescription.content !== description) metaDescription.content = description;
+    )
+    if (metaDescription.content !== description) metaDescription.content = description
 
     /* ---------- <meta name="pagename"> ---------- */
     const metaPageName = ensure(
       query<HTMLMetaElement>('meta[name="pagename"][data-managed="seo"]'),
       () => {
-        const m = document.createElement('meta');
-        m.name = 'pagename';
-        m.dataset.managed = 'seo';
-        document.head.appendChild(m);
-        return m;
+        const m = document.createElement('meta')
+        m.name = 'pagename'
+        m.dataset.managed = 'seo'
+        document.head.appendChild(m)
+        return m
       },
-    );
-    if (metaPageName.content !== title) metaPageName.content = title;
+    )
+    if (metaPageName.content !== title) metaPageName.content = title
 
     /* ---------- <link rel="canonical"> ---------- */
-/* ---------- <link rel="canonical"> ---------- */
-const canonical = ensure(
-  query<HTMLLinkElement>('link[rel="canonical"][data-managed="seo"]'),
-  () => {
-    const l = document.createElement('link');
-    l.rel = 'canonical';
-    l.dataset.managed = 'seo';
-    document.head.appendChild(l);
-    return l;
-  },
-);
+    /* ---------- <link rel="canonical"> ---------- */
+    const canonical = ensure(
+      query<HTMLLinkElement>('link[rel="canonical"][data-managed="seo"]'),
+      () => {
+        const l = document.createElement('link')
+        l.rel = 'canonical'
+        l.dataset.managed = 'seo'
+        document.head.appendChild(l)
+        return l
+      },
+    )
 
-// garantiert reiner string
-const hashPos = url.indexOf('#');
-const urlWithoutHash = hashPos === -1 ? url : url.slice(0, hashPos);
+    // garantiert reiner string
+    const hashPos = url.indexOf('#')
+    const urlWithoutHash = hashPos === -1 ? url : url.slice(0, hashPos)
 
-if (canonical.getAttribute('href') !== urlWithoutHash) {
-  canonical.setAttribute('href', urlWithoutHash);
-}
-
-  
+    if (canonical.getAttribute('href') !== urlWithoutHash) {
+      canonical.setAttribute('href', urlWithoutHash)
+    }
 
     /* ---------- JSON-LD ---------- */
-    document.getElementById('schema-webpage')?.remove();
-    const script = document.createElement('script');
-    script.id   = 'schema-webpage';
-    script.type = 'application/ld+json';
+    document.getElementById('schema-webpage')?.remove()
+    const script = document.createElement('script')
+    script.id = 'schema-webpage'
+    script.type = 'application/ld+json'
     script.textContent = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type'   : 'WebPage',
-      name        : title,
+      '@type': 'WebPage',
+      name: title,
       url,
       description,
-      inLanguage  : langTag,
-      isPartOf    : { '@type': 'WebSite', url: baseUrl },
-    });
-    document.head.appendChild(script);
+      inLanguage: langTag,
+      isPartOf: { '@type': 'WebSite', url: baseUrl },
+    })
+    document.head.appendChild(script)
 
     /* ---------- Clean-up ---------- */
-    return () => script.remove();
-  }, [page, language, location.pathname, location.hash]); // <- hash triggert JSON-LD-Update
-};
+    return () => script.remove()
+  }, [page, language, location.pathname, location.hash]) // <- hash triggert JSON-LD-Update
+}
