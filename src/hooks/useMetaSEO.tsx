@@ -130,6 +130,12 @@ export const useMetaSEO = (page: keyof typeof metadata) => {
       document.documentElement.lang = langTag
     }
 
+    /* ---------- <meta name="language"> ---------- */
+    const metaLang = document.querySelector('meta[name="language"]')
+    if (metaLang && metaLang.getAttribute('content') !== langTag) {
+      metaLang.setAttribute('content', langTag)
+    }
+
     /* ---------- <title> ---------- */
     if (document.title !== title) document.title = title
 
