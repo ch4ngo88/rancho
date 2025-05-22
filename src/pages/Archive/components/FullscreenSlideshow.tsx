@@ -145,7 +145,11 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
 
   /* --------------------------- Interaktionen --------------------------- */
 
-  const handleContainerClick = () => {
+  const handleContainerClick = (e: React.MouseEvent | React.TouchEvent) => {
+    // <<< neu: Event “verschlucken”
+    e.preventDefault()
+    e.stopPropagation()
+
     if (isClosingRef.current) return
 
     if (!isPhone()) {
@@ -153,9 +157,7 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
       return
     }
 
-    /* Phone-Logik:
-       – idle/fullscreen → Button kümmert sich
-       – playing        → Tap beendet Slideshow */
+    // Phone-Logik:
     if (mode === 'playing') {
       handleClose()
     }
@@ -182,7 +184,7 @@ const FullscreenSlideshow: React.FC<FullscreenSlideshowProps> = ({
       ref={containerRef}
       role="presentation"
       className="fixed inset-0 z-[9999] flex h-svh w-svw items-center justify-center bg-black"
-      onClick={handleContainerClick}
+      onClick={handleContainerClick} // Event wird übergeben
       onTouchStart={isPhone() ? handleContainerClick : undefined}
     >
       {/* Play-Button */}
