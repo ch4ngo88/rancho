@@ -199,6 +199,8 @@ export const useMetaSEO = (page: keyof typeof metadata) => {
       description,
       inLanguage: langTag,
       isPartOf: { '@type': 'WebSite', url: baseUrl },
+      datePublished: '2024-04-17',
+      dateModified: import.meta.env.VITE_DATE_MODIFIED ?? new Date().toISOString().split('T')[0],
     })
     document.head.appendChild(script)
 

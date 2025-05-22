@@ -44,16 +44,12 @@ const AboutUsSection = () => {
           <p>{t('intro')}</p>
           <p className="italic text-gray-600">{t('storyIntro')}</p>
 
-          <div
-            className="mx-auto my-8 max-w-2xl overflow-hidden rounded-lg shadow-lg"
-            style={{ maxHeight: '400px' }}
-          >
+          <div className="mx-auto my-8 max-h-[400px] max-w-2xl overflow-hidden rounded-lg shadow-lg">
             <video
               src={asset('images/home/offen.mp4')}
               controls
               poster={asset('images/home/offen.webp')}
-              className="w-full rounded-md"
-              style={{ maxHeight: '400px', objectFit: 'cover' }}
+              className="max-h-[400px] w-full rounded-md object-cover"
               preload="metadata"
             >
               Your browser cannot play this video

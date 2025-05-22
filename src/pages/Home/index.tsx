@@ -11,10 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     // Preconnect and preload critical resources
-    const preconnectGoogle = document.createElement('link')
-    preconnectGoogle.rel = 'preconnect'
-    preconnectGoogle.href = 'https://fonts.googleapis.com'
-    document.head.appendChild(preconnectGoogle)
 
     // Add a short timeout to ensure smooth transition
     const timer = setTimeout(() => setIsLoading(false), 200)

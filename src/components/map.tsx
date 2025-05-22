@@ -25,7 +25,7 @@ export default function Map(): JSX.Element {
       center={position}
       zoom={16}
       scrollWheelZoom={false}
-      style={{ height: '300px', width: '100%', borderRadius: '0.5rem' }}
+      className="h-[300px] w-full rounded-md"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'

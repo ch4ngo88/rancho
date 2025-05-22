@@ -141,7 +141,6 @@ const ChartTooltipContent = React.forwardRef<
         {validPayload.map((item, index) => {
           const key = item.dataKey?.toString() || item.name?.toString() || `item-${index}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
-          const indicatorColor = item.color
 
           return (
             <div key={key} className="flex items-center gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5">
@@ -150,7 +149,7 @@ const ChartTooltipContent = React.forwardRef<
               ) : (
                 <div
                   className="h-2.5 w-2.5 shrink-0 rounded-[2px]"
-                  style={{ backgroundColor: indicatorColor }}
+                  style={{ backgroundColor: `var(--color-${key})` }}
                 />
               )}
               <div className="flex flex-1 justify-between">
@@ -210,7 +209,7 @@ const ChartLegendContent = React.forwardRef<
             ) : (
               <div
                 className="h-2 w-2 shrink-0 rounded-[2px]"
-                style={{ backgroundColor: item.color }}
+                style={{ backgroundColor: `var(--color-${key})` }}
               />
             )}
             <span>{itemConfig?.label ?? item.value}</span>

@@ -104,13 +104,7 @@ const ContactForm = () => {
         {language === 'pt' ? 'Envie-nos uma mensagem' : 'Schreiben Sie uns eine Nachricht'}
       </h2>
       <form onSubmit={handleSubmit} className="space-y-5" autoComplete="on">
-        <input
-          type="text"
-          name="nickname"
-          style={{ display: 'none' }}
-          tabIndex={-1}
-          autoComplete="off"
-        />
+        <input type="text" name="nickname" className="hidden" tabIndex={-1} autoComplete="off" />
         <div>
           <label htmlFor="name" className="form-label">
             {language === 'pt' ? 'Nome' : 'Name'}
