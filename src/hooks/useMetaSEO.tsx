@@ -1,19 +1,17 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useLanguage } from './useLanguage'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useLanguage } from './useLanguage';
+
+/* -------------------------------------------------- */
+/*                Seiten-Metadaten                    */
+/* -------------------------------------------------- */
 
 type MetaData = {
   [key: string]: {
-    title: {
-      pt: string
-      de: string
-    }
-    description: {
-      pt: string
-      de: string
-    }
-  }
-}
+    title: { pt: string; de: string };
+    description: { pt: string; de: string };
+  };
+};
 
 const metadata: MetaData = {
   home: {
@@ -96,81 +94,120 @@ const metadata: MetaData = {
       de: 'Allgemeine Geschäftsbedingungen für Teilnahme und Events des Rancho Folclórico Tradições Portuguesas Hamburg.',
     },
   },
-}
+};
 
-const baseUrl = 'https://tradicoesportuguesas.com'
+const DEFAULT_META = {
+  title: { pt: 'Página Desconhecida', de: 'Unbekannte Seite' },
+  description: { pt: 'Esta página não existe.', de: 'Diese Seite existiert nicht.' },
+} as const;
+
+const baseUrl = 'https://tradicoesportuguesas.com';
+
+/* -------------------------------------------------- */
+/*                   useMetaSEO                       */
+/* -------------------------------------------------- */
 
 export const useMetaSEO = (page: keyof typeof metadata) => {
-  const { language } = useLanguage()
-  const { pathname } = useLocation()
+  const { language } = useLanguage();
+  const location = useLocation(); // nur EINMAL ausserhalb useEffect
 
   useEffect(() => {
-    // ✅ Fallback, wenn page nicht existiert
-    const currentMeta = metadata[page] || {
-      title: {
-        pt: 'Página Desconhecida',
-        de: 'Unbekannte Seite',
+    /* ---------- Basics & Fallbacks ---------- */
+    const safePathname = location.pathname || '/';
+    const currentMeta = metadata[page] ?? DEFAULT_META;
+
+    const langCode = language === 'de' ? 'de' : 'pt' as const;
+    const langTag  = langCode === 'de' ? 'de-DE' : 'pt-PT';
+
+    const title       = currentMeta.title[langCode];
+    const description = currentMeta.description[langCode];
+
+    const url = `${baseUrl}${safePathname}`;
+         // immer String
+
+    /* ---------- <html lang="…"> ---------- */
+    if (document.documentElement.lang !== langTag) {
+      document.documentElement.lang = langTag;
+    }
+
+    /* ---------- <title> ---------- */
+    if (document.title !== title) document.title = title;
+
+    /* ---------- kleine Helfer ---------- */
+    const query = <T extends Element>(selector: string) =>
+      document.querySelector<T>(selector);
+
+    const ensure = <T extends HTMLElement>(
+      maybeNode: T | null,
+      createNode: () => T,
+    ): T => maybeNode ?? createNode();
+
+    /* ---------- <meta name="description"> ---------- */
+    const metaDescription = ensure(
+      query<HTMLMetaElement>('meta[name="description"][data-managed="seo"]'),
+      () => {
+        const m = document.createElement('meta');
+        m.name = 'description';
+        m.dataset.managed = 'seo';
+        document.head.appendChild(m);
+        return m;
       },
-      description: {
-        pt: 'Esta página não existe.',
-        de: 'Diese Seite existiert nicht.',
+    );
+    if (metaDescription.content !== description) metaDescription.content = description;
+
+    /* ---------- <meta name="pagename"> ---------- */
+    const metaPageName = ensure(
+      query<HTMLMetaElement>('meta[name="pagename"][data-managed="seo"]'),
+      () => {
+        const m = document.createElement('meta');
+        m.name = 'pagename';
+        m.dataset.managed = 'seo';
+        document.head.appendChild(m);
+        return m;
       },
-    }
+    );
+    if (metaPageName.content !== title) metaPageName.content = title;
 
-    const langCode = language === 'de' ? 'de' : 'pt'
-    const langTag = language === 'de' ? 'de-DE' : 'pt-PT'
-    const title = currentMeta.title[langCode]
-    const description = currentMeta.description[langCode]
-    const url = `${baseUrl}${pathname}`
+    /* ---------- <link rel="canonical"> ---------- */
+/* ---------- <link rel="canonical"> ---------- */
+const canonical = ensure(
+  query<HTMLLinkElement>('link[rel="canonical"][data-managed="seo"]'),
+  () => {
+    const l = document.createElement('link');
+    l.rel = 'canonical';
+    l.dataset.managed = 'seo';
+    document.head.appendChild(l);
+    return l;
+  },
+);
 
-    // ---------- <title>
-    document.title = title
+// garantiert reiner string
+const hashPos = url.indexOf('#');
+const urlWithoutHash = hashPos === -1 ? url : url.slice(0, hashPos);
 
-    // ---------- <meta name="description">
-    const metaDescription = document.querySelector('meta[name="description"]')
-    if (metaDescription) {
-      metaDescription.setAttribute('content', description)
-    } else {
-      const newMeta = document.createElement('meta')
-      newMeta.setAttribute('name', 'description')
-      newMeta.setAttribute('content', description)
-      document.head.appendChild(newMeta)
-    }
-
-    // ---------- <meta name="pagename">
-    const metaPageName = document.querySelector('meta[name="pagename"]')
-    if (metaPageName) {
-      metaPageName.setAttribute('content', title)
-    } else {
-      const newMeta = document.createElement('meta')
-      newMeta.setAttribute('name', 'pagename')
-      newMeta.setAttribute('content', title)
-      document.head.appendChild(newMeta)
-    }
-
-    // ---------- JSON-LD @type: WebPage + isPartOf
-    const existingJsonLd = document.querySelector('#schema-webpage')
-    if (existingJsonLd) {
-      existingJsonLd.remove()
-    }
-
-    const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: title,
-      url: url,
-      description: description,
-      inLanguage: langTag,
-      isPartOf: {
-        '@type': 'WebSite',
-        url: baseUrl,
-      },
-    }
-
-    const script = document.createElement('script')
-    script.setAttribute('type', 'application/ld+json')
-    script.setAttribute('id', 'schema-webpage')
-    script.textContent = JSON.stringify(jsonLd)
-    document.head.appendChild(script)
-  }, [page, language, pathname])
+if (canonical.getAttribute('href') !== urlWithoutHash) {
+  canonical.setAttribute('href', urlWithoutHash);
 }
+
+  
+
+    /* ---------- JSON-LD ---------- */
+    document.getElementById('schema-webpage')?.remove();
+    const script = document.createElement('script');
+    script.id   = 'schema-webpage';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type'   : 'WebPage',
+      name        : title,
+      url,
+      description,
+      inLanguage  : langTag,
+      isPartOf    : { '@type': 'WebSite', url: baseUrl },
+    });
+    document.head.appendChild(script);
+
+    /* ---------- Clean-up ---------- */
+    return () => script.remove();
+  }, [page, language, location.pathname, location.hash]); // <- hash triggert JSON-LD-Update
+};
