@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async'
 import { useLanguage } from '@/hooks/useLanguage'
 
+
 const SeoMeta = () => {
   const { language } = useLanguage()
   const langCode = language === 'de' ? 'de-DE' : 'pt-PT'

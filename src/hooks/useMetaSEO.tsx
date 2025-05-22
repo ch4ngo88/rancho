@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useLanguage } from './useLanguage'
 
 type MetaData = {
@@ -97,22 +98,79 @@ const metadata: MetaData = {
   },
 }
 
+const baseUrl = 'https://tradicoesportuguesas.com'
+
 export const useMetaSEO = (page: keyof typeof metadata) => {
   const { language } = useLanguage()
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    const currentMeta = metadata[page]
-    if (currentMeta) {
-      document.title = currentMeta.title[language]
-      const metaDescription = document.querySelector('meta[name="description"]')
-      if (metaDescription) {
-        metaDescription.setAttribute('content', currentMeta.description[language])
-      } else {
-        const newMetaDescription = document.createElement('meta')
-        newMetaDescription.setAttribute('name', 'description')
-        newMetaDescription.setAttribute('content', currentMeta.description[language])
-        document.head.appendChild(newMetaDescription)
-      }
+    // ✅ Fallback, wenn page nicht existiert
+    const currentMeta = metadata[page] || {
+      title: {
+        pt: 'Página Desconhecida',
+        de: 'Unbekannte Seite',
+      },
+      description: {
+        pt: 'Esta página não existe.',
+        de: 'Diese Seite existiert nicht.',
+      },
     }
-  }, [page, language])
+
+    const langCode = language === 'de' ? 'de' : 'pt'
+    const langTag = language === 'de' ? 'de-DE' : 'pt-PT'
+    const title = currentMeta.title[langCode]
+    const description = currentMeta.description[langCode]
+    const url = `${baseUrl}${pathname}`
+
+    // ---------- <title>
+    document.title = title
+
+    // ---------- <meta name="description">
+    const metaDescription = document.querySelector('meta[name="description"]')
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description)
+    } else {
+      const newMeta = document.createElement('meta')
+      newMeta.setAttribute('name', 'description')
+      newMeta.setAttribute('content', description)
+      document.head.appendChild(newMeta)
+    }
+
+    // ---------- <meta name="pagename">
+    const metaPageName = document.querySelector('meta[name="pagename"]')
+    if (metaPageName) {
+      metaPageName.setAttribute('content', title)
+    } else {
+      const newMeta = document.createElement('meta')
+      newMeta.setAttribute('name', 'pagename')
+      newMeta.setAttribute('content', title)
+      document.head.appendChild(newMeta)
+    }
+
+    // ---------- JSON-LD @type: WebPage + isPartOf
+    const existingJsonLd = document.querySelector('#schema-webpage')
+    if (existingJsonLd) {
+      existingJsonLd.remove()
+    }
+
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: title,
+      url: url,
+      description: description,
+      inLanguage: langTag,
+      isPartOf: {
+        '@type': 'WebSite',
+        url: baseUrl,
+      },
+    }
+
+    const script = document.createElement('script')
+    script.setAttribute('type', 'application/ld+json')
+    script.setAttribute('id', 'schema-webpage')
+    script.textContent = JSON.stringify(jsonLd)
+    document.head.appendChild(script)
+  }, [page, language, pathname])
 }
